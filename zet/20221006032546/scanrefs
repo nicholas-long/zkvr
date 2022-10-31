@@ -1,0 +1,80 @@
+#!/usr/bin/awk -f
+# this script scans all files in one pass and prints all metadata and problems
+# ids that have un-enriched list item links are printed with cleanup
+# missing backlinks are printed with backlink
+#
+# cleanup 20221007144143
+# backlink 20221006013612 20221007144143 1
+# backlink 20221006032546 20221007144143 1
+
+# cool trick: store lower id, higher id tuple in array and increment count
+# use unsorted id tuple to keep specific references so we know what to print at end
+function xrefid(id1,id2) {
+  if (id1 < id2) { return (id1 " " id2) }
+  else { return (id2 " " id1) }
+}
+BEGIN {
+  FS="\t"
+  while ((getline < "id_headings") > 0){
+    ids[$1] = 1
+    heading[$1] = $3
+  }
+  FS = " "
+}
+BEGINFILE {
+  scanning = 0
+  empties = 0
+  fileid = FILENAME
+  gsub(/^zet./,"",fileid)
+  gsub(/\/.*$/,"",fileid)
+  seenfile[fileid] = 1
+}
+/^# [Rr]elated/ { scanning = 1 }
+!scanning { next }
+{ last = $0 }
+scanning && /^$/ { empties++ }
+/^- / {
+  refid = $2
+  gsub(/^\[/,"",refid)
+  gsub(/].*$/,"",refid)
+  isref=0
+  if ($2 ~ /^[0-9]{14}/) {
+    isref=1
+    cleanup[fileid] = 1
+  }
+  if ($2 ~ /^\[[0-9]{14}\]/) {
+    isref=1
+    if (index($0, heading[refid]) == 0) { # rough check heading text
+      cleanup[fileid] = 1
+    }
+  }
+  if ( isref ) {
+    seenref[xrefid(fileid, refid)]++
+    if (seenooo[fileid " " refid]) print "duplicate", fileid
+    seenooo[fileid " " refid] = 1
+    if (ids[refid]) print "ref", fileid, refid
+    else print "dead", fileid, refid
+  }
+}
+ENDFILE {
+  if (last ~ /^    #/){ # take tags from last line of prev file
+    gsub(/^ +/,"") # strip leading spaces
+    gsub(/ +$/,"") # strip trailing spaces
+    print "tags", fileid, $0
+  }
+  if (empties > 3) { # 3 empty lines allowed around references headings for zettel format
+    print "emptylines", fileid, empties
+  }
+}
+END {
+  for (id in cleanup) print "cleanup", id
+  for (x in seenref) if ( seenref[x] < 2 ) { # xref ordering trick
+    if (seenooo[x]) { # if seen out of order, then flip
+      split(x,arr," ")
+      print "backlink", arr[2], arr[1], 1
+    } else {
+      print "backlink", x, seenref[x]
+    }
+  }
+}
+# vim: set syntax=awk:

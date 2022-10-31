@@ -1,0 +1,218 @@
+#!/bin/bash
+
+# Nicholas Long
+# see documentation at zet/20221013221136/README.md
+
+buf=$(mktemp)       # working set
+temp=$(mktemp)      # used in operation
+joined=$(mktemp)    # tempfile for intersections
+paths=$(mktemp)     # tempfile for all paths
+result=$(mktemp)
+export pathmode=0   # path mode means no repeats
+
+interpret="$0"
+human=0 # by default the script should return raw IDs as output, add --human flag to see readable links and titles
+echo "query $@" > /dev/stderr
+
+# fill initial working set
+find zet -name README.md | awk -F / '{print $(NF-1)}' > $paths
+
+# loop over argument tokens and process each operation
+while [[ $# -gt 0 ]]; do
+  skipjoining=0
+
+  # initialize buf with unique ending items
+  awk '{print $NF}' $paths | sort -u > $buf
+
+  #echo "parsing $1" > /dev/stderr
+  if [ -f "$1" -o -p "$1" ]; then # file or pipe
+    echo "got file $1" > /dev/stderr
+    grep -Eo '[0-9]{14}' "$1" | sort -u > $temp
+    join $buf $temp > $joined
+    cp "$joined" "$result" #TODO: can get rid of this
+  elif [[ "$1" =~ ^@.*$ ]]; then # tag
+    tagname="$1"
+    tagname=${tagname//@/}
+    #echo "read tags $tagname" > /dev/stderr
+    filename="tagindex/$tagname.md"
+    if [ ! -f "$filename" ]; then
+      echo "no tags for $tagname" > /dev/stderr
+      exit 1
+    fi
+    implementation/parseids tagindex/$tagname.md | sort -u > $temp
+    join $buf $temp > $joined
+    cp "$joined" "$result" #TODO: can get rid of this
+  elif [[ "$1" == '--human' ]]; then # human readable argument
+    human=1
+    cp $buf $result
+  elif [[ "$1" == '--path' ]]; then # path mode
+    pathmode=1
+    cp $buf $result
+  elif [[ "$1" == 'like' ]]; then
+    shift
+    pattern="$1"
+    #echo "like $pattern" > /dev/stderr
+    awk '{print "zet/" $0 "/README.md"}' $buf |\
+      xargs grep -i "$pattern" |\
+      cut -d : -f 1 | implementation/parseids | sort -u > $temp
+    join $buf $temp > $joined
+    cp "$joined" "$result" #TODO: can get rid of this
+  elif [[ "$1" == ':' || "$1" == 'refs' ]]; then
+    #TODO: redo this for paths
+    #cat $buf | xargs -n 1 ./zc refs | sort -u > $temp
+    #cp "$temp" "$buf"
+    awk '
+      { id = $1 }
+      {
+        cmd = "implementation/quickrefs " id " 2>/dev/null"
+        while ((cmd | getline) > 0) {
+          print id, $0
+        }
+        close(cmd)
+      }
+    ' $buf > $result
+  elif [[ "$1" == 'id' ]]; then
+    shift
+    echo $1 > $temp
+    join $buf $temp > $joined
+    cp "$joined" "$result" #TODO: can get rid of this
+  elif [[ "$1" == 'follow' ]]; then # added for walks, concatenate matching ones from file
+    shift
+    if [ -f "$1" -o -p "$1" ]; then
+      echo "got file $1" > /dev/stderr
+      cat "$1" > $result # putting it in result will do intended behavior
+    else
+      echo "not a file $1" > /dev/stderr
+      exit 1
+    fi
+  elif [[ "$1" == 'union' ]]; then # added for walks, append set of walks with ones in subquery/file
+    shift
+    if [ -f "$1" -o -p "$1" ]; then
+      echo "got file $1" > /dev/stderr
+      cat "$paths" "$1" | sort -u > $joined
+      cp $joined $paths
+      #awk '{print $NF}' | sort -u > $result # print last ID in result so it gets saved
+      skipjoining=1
+    else
+      echo "not a file $1" > /dev/stderr
+      exit 1
+    fi
+  # TODO: walk N
+  elif [[ "$1" == 'not' ]]; then
+    shift
+    if [ -f "$1" -o -p "$1" ]; then
+      echo "got file $1" > /dev/stderr
+      grep -Eo '[0-9]{14}' "$1" | sort -u > $temp
+      join -v 1 $buf $temp > $joined
+      cp "$joined" "$result" #TODO: can get rid of this
+    else
+      echo "not a file $1" > /dev/stderr
+      exit 1
+    fi
+  elif [[ "$1" == 'file' ]]; then
+    #grep -Eo '[0-9]{14}' "$1" | sort -u > $temp
+    #join $buf $temp > $joined
+    shift
+    if [ -f "$1" ]; then
+      implementation/parseids "$1" | sort -u > $result
+    fi
+  elif [[ "$1" == 'edges' ]]; then
+    # does not apply to walk?
+    awk '
+      ARGIND == 1 { ids[$0] = 1 }
+      ARGIND == 2 {
+        id = $0
+        cmd = "./zc refs " id
+        while ((cmd | getline) > 0) {
+          if ($0 in ids) print id, $0
+        }
+      }
+    ' $buf $buf # read it twice
+    exit 0 # returning edge tuples instead of a set is terminal
+  fi
+  # $result contains output of operations
+
+  # use buf as temp file for joining now
+
+  # join back paths
+  if [[ $skipjoining == 0 ]]; then
+    export tempdir=$(mktemp -d)
+    awk ' #join the first id of the results with the last id of the existing paths
+      BEGIN { tempdir = ENVIRON["tempdir"] "/" }
+      ARGIND == 1 { # result
+        file = tempdir $1
+        print >> file
+        seenid[$1] = 1
+        close(file)
+      }
+      ARGIND == 2 { # existing paths to join
+        lastid = $NF
+        if (seenid[lastid]) {
+          file = tempdir lastid
+          NF--
+          line = $0
+          while ((getline < file) > 0) {
+            print line, $0
+          }
+          close(file)
+        }
+      }
+    ' $result $paths > $buf
+    rm -rf "$tempdir"
+  else # skipped joining
+    cat $paths > $buf
+  fi
+
+  # remove repeats if path mode
+  if [[ $pathmode == 1 ]]; then
+    awk '
+      BEGIN {
+        seen[""] = 0
+        pathmode = ENVIRON["pathmode"]
+      }
+      pathmode == 1 { # path mode means no repeats
+        delete seen
+        for (n = 1; n <= NF; n++) {
+          if (seen[n]) { next }
+          seen[n] = 1
+        }
+      }
+      { print }
+    ' $buf > $joined
+    mv "$joined" "$paths"
+  else
+    cp $buf $paths
+  fi
+
+  shift
+  if [ "$(wc -l $buf | awk '{print $1}')" -eq 0 ]; then
+    echo "no more results" > /dev/stderr
+    break
+  fi
+done # end of operations loop
+
+# final output of script
+if [ $human == 0 ]; then
+  LC_COLLATE=C sort $paths
+else # print readable table with titles
+  awk '{
+    for (n = 1; n <= NF; n++) {
+      id = $n
+      command = "head -n 1 zet/" id "/README.md"
+      command | getline header
+      close(command)
+      gsub(/# /,"",header)
+      command = "tail -n 1 zet/" id "/README.md"
+      command | getline tags
+      close(command)
+      gsub(/^ +/,"",tags)
+      print "- [" id "](/zet/" id "/README.md)", header, tags
+    }
+    print ""
+  }' <(LC_COLLATE=C sort $paths)
+fi
+
+# cleanup
+[ -f "$buf" ]     && rm "$buf"
+[ -f "$temp" ]    && rm "$temp"
+[ -f "$joined" ]  && rm "$joined"

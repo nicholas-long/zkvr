@@ -1,0 +1,29 @@
+#!/usr/bin/awk -f
+#print first file up to snippet, then save the rest after snippet.
+#print second file, then print saved stuff after snippet.
+#end effect is inserting it into file
+#add index paremter to alter other snippets
+BEGIN {
+  foundstartsnip = foundendsnip = ndx = l = insnip = 0
+  if (!snipindex) snipindex = 1 # pass as parameter and overwrite this to write to other snippets
+}
+ARGIND == 2 { print; next }
+{ snipline = 0 }
+/^```/ { snipline = 1; insnip = !insnip }
+insnip && snipline { ndx++ }
+ARGIND == 1 {
+  if (!foundstartsnip) {
+    print
+    if (snipline && ndx == snipindex) {
+      foundstartsnip = 1
+    }
+  } else if (!foundendsnip) {
+    if (snipline) {
+      foundendsnip = 1
+    }
+  }
+  if (foundendsnip) {
+    save[l++] = $0
+  } 
+}
+END { for (n = 0; n < l; n++) print save[n] }

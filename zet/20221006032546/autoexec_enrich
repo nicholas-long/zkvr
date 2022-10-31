@@ -1,0 +1,6 @@
+#!/bin/bash
+IMPL=20221006032546
+
+echo "implementation/autoexec_enrich got executed with $@"
+
+zet/$IMPL/insertsnippet $IMPL <( echo ./zc -h && ./zc -h )

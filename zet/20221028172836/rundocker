@@ -1,0 +1,3 @@
+#!/bin/bash
+docker build . -t zkvr
+docker run --rm -it zkvr

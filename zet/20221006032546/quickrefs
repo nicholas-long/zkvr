@@ -1,0 +1,11 @@
+#!/usr/bin/awk -f
+BEGIN {
+  id = ARGV[1]
+  if (id !~ /^[0-9]+/) { print "bad ID", id ; exit 1 }
+  ARGV[1] = "refs/" substr(id,13)
+}
+$1 == id { refs[n++] = $2 }
+END {
+  len = asort(refs,arr)
+  for (n = 1; n < len; n++) print arr[n]
+}

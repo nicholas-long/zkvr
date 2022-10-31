@@ -1,0 +1,22 @@
+#!/usr/bin/awk -f
+# reformat whole markdown file
+ENDFILE {
+  if (empties > 3) { # 3 empty lines allowed around references headings for zettel format
+    print "emptylines", fileid, empties
+  }
+  scanning=0
+}
+scanning && /^$/ { next } # skip blank lines after related
+/^Tags/ {
+  print ""
+  print
+  print ""
+  next
+}
+{ print }
+/^# [Rr]elated/ {
+  if (last !~ /^$/) print "" # insert blank before related
+  scanning = 1
+  print ""
+}
+{ last = $0 }

@@ -1,0 +1,68 @@
+#!/bin/bash
+# zet command wrapper
+# Nicholas Long
+
+SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
+
+origdir="$PWD"
+export ZET_IMPL_ID=20221027011800
+export ZET_PROG="$0"
+if [ -z "$EDITOR" ]; then
+  EDITOR=$(which nvim 2>/dev/null || which vim 2>/dev/null || which vi 2>/dev/null )
+fi
+
+which realpath 2>/dev/null >/dev/null
+if [[ $? == 0 ]]; then
+  export ZET_PROG=$(realpath $0)
+else
+  echo "no realpath installed" > /dev/stderr
+fi
+
+which basename 2>/dev/null >/dev/null
+if [[ $? != 0 ]]; then
+  echo "ERROR: basename command required" > /dev/stderr
+  exit 1
+fi
+
+# if zet dir is defined by a parent process then cd there
+[ -z "$ZET_DIR" ] || cd "$ZET_DIR"
+
+# if not in zet directory, cd to the one this program is from
+[ -d zet ] || cd $SCRIPT_DIR # running from root dir alongside zet
+[ -d zet ] || cd $SCRIPT_DIR/../../ # running from this script folder
+if [ ! -d zet ]; then
+  echo "ERROR: cannot find zettelkasten: $origdir $SCRIPT_DIR" > /dev/stderr
+  exit 1
+fi
+
+export ZET_DIR="$(pwd)"
+echo "current zettelkasten: $ZET_DIR" > /dev/stderr
+implementation="$ZET_DIR/zet/$ZET_IMPL_ID"
+
+action=$1
+shift
+
+if [ -z "$action" ]; then
+  echo "ERROR: no action provided" > /dev/stderr
+  "$ZET_PROG" --help 2>/dev/null
+  exit 1
+fi
+
+if [[ "$action" == "help" || "$action" == "--help" ]]; then
+  if [ -z "$prettyname" ]; then
+    export prettyname=$(awk 'BEGIN { split(ENVIRON["ZET_PROG"],arr,"/"); print arr[length(arr)] }')
+  fi
+  echo "full list of actions:"
+  ls $implementation/zc-* | awk -F / '{ gsub(/^zc-/,"",$NF); print $NF }'
+  echo "for help on any action, run $prettyname <action> --help"
+  exit 0
+fi
+
+actionexec="$implementation/zc-$action"
+if [ -f "$actionexec" ]; then
+  "$actionexec" $@
+else
+  echo "ERROR: unknown action $action" > /dev/stderr
+  "$ZET_PROG" --help 2>/dev/null
+  exit 1
+fi

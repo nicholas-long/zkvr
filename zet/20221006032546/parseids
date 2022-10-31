@@ -1,0 +1,17 @@
+#!/usr/bin/awk -f
+# parse IDs from paths
+# example of awk match
+match($0, /zet.([0-9]+)\//, arr) { print arr[1] }
+
+# TODO: add to notes
+# awk man page
+#
+#       RSTART      The index of the first character matched by match(); 0 if no match.  (This implies that character indices start at one.)
+#       RLENGTH     The length of the string matched by match(); -1 if no match.
+#
+#       match(s, r [, a])       Return  the  position in s where the regular expression r occurs, or zero if r is not present, and set the values of
+#                               RSTART and RLENGTH.  Note that the argument order is the same as for the ~ operator: str ~ re.  If array a  is  pro‐
+#                               vided,  a  is  cleared  and then elements 1 through n are filled with the portions of s that match the corresponding
+#                               parenthesized subexpression in r.  The zero'th element of a contains the portion of s matched by the entire  regular
+#                               expression  r.  Subscripts a[n, "start"], and a[n, "length"] provide the starting index in the string and length re‐
+#                               spectively, of each matching substring.

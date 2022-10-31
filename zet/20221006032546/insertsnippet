@@ -1,0 +1,9 @@
+#!/bin/bash
+
+export IMPL=20221006032546
+target="zet/$1/README.md"
+if [ -f "$target" ]; then
+  tf=$(mktemp)
+  zet/$IMPL/addsnippet $target "$2" > "$tf"
+  mv "$tf" "$target"
+fi

@@ -1,0 +1,3 @@
+!pr { print }
+/```/ && pr { pr = 0; print }
+/```/ && !pr { print "hi this is a script"; pr = 1 }

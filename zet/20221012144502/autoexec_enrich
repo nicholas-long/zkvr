@@ -1,0 +1,20 @@
+#!/bin/bash
+export MY_ID=20221012144502
+export RECENT_MOD=20221012171100
+export IMPL=20221006032546
+
+export recenttimestamp=$(date -u --date='100 hours ago' '+%Y%m%d%H%M%S')
+echo ""
+echo "recent = $recenttimestamp"
+echo ""
+
+recentids=$(mktemp)
+find zet -type f -name README.md 2>/dev/null | awk -F / '$(NF - 1) > ENVIRON["recenttimestamp"] { print $(NF - 1) }' > $recentids
+
+# remove everything that does not belong on the module
+./graphquery id $RECENT_MOD : not $recentids not <( echo $MY_ID ) | grep . | \
+  awk ' /^[0-9]+$/ { system("./zc unlink " ENVIRON["RECENT_MOD"] " " $0) } '
+
+# add everything that is missing
+./graphquery $recentids not <( ./graphquery id $RECENT_MOD : ) | grep . | \
+  awk ' /^[0-9]+$/ { system("./zc addref -t " ENVIRON["RECENT_MOD"] " " $0) } '

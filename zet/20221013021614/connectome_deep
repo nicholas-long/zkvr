@@ -1,0 +1,37 @@
+#!/bin/bash
+
+awk '
+BEGINFILE {
+  rl=related=gotheading=0
+  id = FILENAME
+  gsub(/^zet\//,"",id)
+  gsub(/\/.*$/,"",id)
+}
+$0 ~ /^ *$/ { next }
+{ lastline = $0 }
+gotheading && !related {
+  if (!/^# [Rr]elated/) print id, heading, $0
+}
+gotheading && related {
+  if ($2 ~ /^\[.*\)$/) { gsub(/^- [^ ]+/,"- ") }
+}
+related && /^- / {
+  for (n=0;n<rl;n++) {
+    print id, heading, $0, relatedlines[n]
+  }
+  #if the knowledge base gets too big and search is slow, edit this ?
+  if (rl < 9) relatedlines[rl++] = $0
+}
+!gotheading && /^# / {
+  gsub(/^# /,"")
+  heading = $0
+  gotheading=1
+}
+gotheading && /^# [Rr]elated/ {
+  related=1
+}
+ENDFILE {
+  gsub(/^ */,"",lastline)
+  print id, heading, lastline # print tags
+}
+' $(find zet -name README.md)

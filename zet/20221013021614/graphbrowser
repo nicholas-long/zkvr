@@ -1,0 +1,348 @@
+#!/bin/bash
+# zkvr
+# Nicholas Long 2022
+SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
+
+MYID=20221013021614
+IMPL=20221006032546
+
+export GRAPH_PROG="$0"
+
+# run me as symlink from my directory or in somewhere with a zet/
+[ -d zet ] || cd $SCRIPT_DIR && export prog="$SCRIPT_DIR/zc" && export GRAPH_PROG="$SCRIPT_DIR/zkvr"
+
+if [ -z "$EDITOR" ]; then
+  EDITOR=$(which nvim 2>/dev/null || which vim 2>/dev/null || which vi 2>/dev/null )
+fi
+if [ -z "$prog" ]; then
+  export prog="./zc"
+fi
+if [ ! -d "fzftracking" ]; then
+  mkdir -p fzftracking
+fi
+
+# running preview subprocess
+if [ "$1" == "video" ]; then
+  if [ "$3" == "stat" ]; then
+    zet/$IMPL/previewgit
+  elif [ "$2" == "preview" ]; then
+    selid=$(echo "$3" | implementation/parseids)
+    bat --language md --style=plain --color=always zet/$selid/README.md
+  else
+    # touch .helpless to hide help messages
+    [ -f './.helpless' ] || (bat --language md --style=plain --color=always <( awk -v "cmd=$3" ' $2 ~ cmd { print } ' zet/$MYID/README.md | head -n 1 ))
+    bat --color=always $2
+  fi
+  exit 0
+fi
+
+# TODO: can replace all ./zc with $prog ?
+# main loop
+going=1
+export prevdoc="README.md" # quick way to fix a bug before it happens
+export doc="README.md"
+if [ ! -z "$1" ]; then
+  export doc="$1"
+fi
+selection=$(mktemp)
+attachments=$(mktemp)
+while [ 1 == "$going" ]; do
+  id="$doc" # get id here too for fzf history
+  if [[ "$doc" =~ zet/[0-9]+ ]]; then
+    id=$(echo "$doc" | awk -F / '{ print $(NF-1) }')
+  fi
+  id=${id//\//_} # make sure there's something in this variable to save as fzf history file
+  awk '
+  BEGIN {
+    doc = ENVIRON["doc"]
+    print "edit", doc
+
+    if (ENVIRON["TMUX"] ~ /tmux/) {
+      print "copy..."
+      print "tab"
+      print "copypath"
+      print "workdir"
+    }
+    print "~"
+    print "/search"
+    print "back"
+    if (doc != "README.md") {
+      id = doc
+      gsub(/^zet\//,"",id)
+      gsub(/\/.*$/,"",id)
+      if (id != "README.md") {
+        lsdir = "ls zet/" id
+        cmd = lsdir " | grep -v \047README\.md\047"
+        while ((cmd | getline) > 0) {
+          print "edit", "zet/" id "/" $0
+        }
+        close(cmd)
+        print "spawn"
+        print "xfer"
+        print "fxfer"
+        print "mkfile"
+        print "link"
+        print "unlink"
+        print "addtags"
+        print "deltags"
+        print "spraytag"
+        print "nuketag"
+        print "clone"
+      }
+    } else {
+      id = 0
+      print "xfer"
+    }
+    print "tagindex"
+    print "enrich"
+    print "stat"
+    print "quit"
+    fflush()
+  }
+  /^ *- \[.*\]\(\/zet\/[0-9]+\/README.md\)/ {
+    print "goto", $0
+    fflush()
+  }
+  ' "$doc" | fzf \
+    --preview="$GRAPH_PROG video '$doc' {}" \
+    --bind "pgup:preview-up,pgdn:preview-down" \
+    "--preview-window=up,75%" \
+    "--history=fzftracking/$id" \
+    --prompt="$doc :" > "$selection"
+  sel="$(cat $selection)"
+  act=$(cat $selection | awk '{print $1}')
+  id=$(echo "$doc" | awk -F / '{ print $(NF-1) }')
+  if [ "$act" == "quit" ]; then
+    exit 0
+  elif [ "$act" == "goto" ]; then
+    export prevdoc="$doc"
+    doc=$(awk '{
+      gsub(/\).*$/,"")
+      gsub(/^.*\(/,"")
+      gsub(/^\//,"")
+      print
+    }' $selection)
+    echo "changed to $doc"
+  elif [ "$act" == 'tagindex' ]; then
+    choice=$(ls tagindex | fzf)
+    prevdoc="$doc"
+    doc="tagindex/$choice"
+    echo "changed to $doc"
+  elif [ "$act" == 'workdir' ]; then
+    wd=$(awk 'BEGIN {FS=OFS="/"} {NF--;print}' <(echo $doc))
+    echo "opening window to $wd"
+    if [ -d "$wd" ]; then
+      tmux new-window -c "$wd"
+    fi
+  elif [ "$act" == '~' ]; then
+    prevdoc="$doc"
+    doc="README.md"
+    echo "changed to $doc"
+  elif [ "$act" == "unlink" ]; then
+    echo "DEBUG: current id is $id"
+    awk '
+      /^ *- \[.*\]\(\/zet\/[0-9]+\/README.md\)/ {
+        print $0
+        fflush()
+      }
+    ' "$doc" | fzf > "$selection"
+    if [ ! -z "$id" ]; then
+      zet/$IMPL/parseids $selection | sort -u | xargs -n 1 $prog unlink "$id"
+    fi
+  elif [ "$act" == "link" ]; then
+    $prog connectome -m | awk '{print $1}' > $selection
+    if [ ! -z "$id" ]; then
+      temp=$(mktemp)
+      zet/$IMPL/parseids $selection | sort -u > $temp
+      if [[ $(wc -l $temp | awk '{print $1}') != "0" ]]; then
+        cat $temp | xargs -n 1 $prog addref -t "$id"
+      fi
+    fi
+    ./zc enrich_links_single "$id"
+  elif [ "$act" == "back" ]; then
+    temp="$doc"
+    doc="$prevdoc"
+    prevdoc="$temp" # would expect back to work again?
+    echo "back to $doc"
+  elif [ "$act" == "edit" ]; then
+    choice=$(cat $selection | awk '{print $2}')
+    $EDITOR "$choice"
+  elif [ "$act" == "addtags" ]; then
+    selection=$(mktemp)
+    ls tagindex/ | sed -e 's/\.md$//' | fzf -m > $selection
+    for tag in $(cat $selection); do
+      if [ ! -z "$tag" ]; then
+        echo "adding tag $tag to $doc"
+        sed -i -e '$s/ *$//' -e '$s/$/ #'$tag'/' -e '$s/  */ /g' -e '$s/^ */    /' "$doc"
+      fi
+    done
+    rm "$selection"
+  elif [ "$act" == "spraytag" ]; then
+    tag=$(ls tagindex/ | sed -e 's/\.md$//' | fzf)
+    # get spawn menu from tab
+    selection=$(mktemp)
+    awk '
+      /^ *- \[.*\]\(\/zet\/[0-9]+\/README.md\)/ {
+        print $0
+        fflush()
+      }
+    ' "$doc" | fzf -m --preview="$GRAPH_PROG video preview {}" | zet/$IMPL/parseids > "$selection"
+    for i in $(cat $selection); do
+      if [ ! -z "$tag" ]; then
+        ./zc addtag -t "$tag" $i
+      fi
+    done
+  elif [ "$act" == "nuketag" ]; then
+    tag=$(ls tagindex/ | sed -e 's/\.md$//' | fzf)
+    # get spawn menu from tab
+    selection=$(mktemp)
+    awk '
+      /^ *- \[.*\]\(\/zet\/[0-9]+\/README.md\)/ {
+        print $0
+        fflush()
+      }
+    ' "$doc" | fzf -m --preview="$GRAPH_PROG video preview {}" | zet/$IMPL/parseids > "$selection"
+    for i in $(cat $selection); do
+      if [ ! -z "$tag" ]; then
+        ./zc deltag -t "$tag" $i
+      fi
+    done
+  elif [ "$act" == "deltags" ]; then
+    selection=$(mktemp)
+    zet/20221025024238/enumtags $doc | fzf -m > $selection
+    for tag in $(cat $selection); do
+      if [ ! -z "$tag" ]; then
+        echo "removing tag $tag from $doc"
+        # remove tags and cleanup spaces from end and ensure 4 at beginning
+        sed -i -e '$s/#'$tag'//' -e '$s/ *$//' -e '$s/  */ /g' -e '$s/^ */    /' "$doc"
+      fi
+    done
+    rm "$selection"
+  elif [ "$act" == "tab" ]; then
+    selection=$(mktemp)
+    awk '
+      /^ *- \[.*\]\(\/zet\/[0-9]+\/README.md\)/ {
+        print $0
+        fflush()
+      }
+    ' "$doc" | fzf -m | zet/$IMPL/parseids > "$selection"
+    awk '{print "zet/" $0 "/README.md"}' $selection | xargs -n 1 tmux new-window "$GRAPH_PROG"
+    rm "$selection"
+  elif [ "$act" == "/search" ]; then
+    if [ -z $TMUX ]; then
+      newid=$(zet/$MYID/connectome_deep | fzf | awk '{print $1}')
+      export prevdoc="$doc"
+      export doc=zet/$newid/README.md
+    else
+      tf=$(mktemp)
+      zet/$MYID/connectome_deep | fzf -m | awk '{print $1}' | sort -u > $tf
+      for f in $(cat $tf); do
+        tmux new-window -n 'explore' $GRAPH_PROG zet/$f/README.md
+      done
+      rm "$tf"
+    fi
+  elif [ "$act" == "spawn" ]; then
+    id=$(echo "$doc" | awk -F / '{print $(NF-1)}')
+    read -p "enter title> " title
+    newid=$(./zc new -t "$title" -r "$id" | awk '/created zet ID/ { print $NF }')
+    echo "spawned $newid"
+    ./zc addref -t $id $newid
+    ./zc enrich_links_single $id
+    ./zc enrich_links_single $newid
+    #TODO: add fzf menu step to select more links like workflow loop
+  elif [ "$act" == "mkfile" ]; then
+    id=$(echo "$doc" | awk -F / '{print $(NF-1)}')
+    read -p "enter filename> " filename
+    path="zet/$id/$filename"
+    touch "$path"
+    read -p "exec? (y/n)" exec
+    if [[ $exec =~ [Yy] ]]; then
+      chmod +x "$path"
+    fi
+  elif [ "$act" == "stat" ]; then
+    if which lazygit; then
+      lazygit
+    else
+      git status # i guess
+      sleep 2
+    fi
+  elif [ "$act" == "copy..." ]; then
+    zet/$MYID/getcopycontent "$doc" | fzf --tac '--prompt=tab select many :' -m | tmux loadb -
+  elif [ "$act" == "copypath" ]; then
+    echo -n "$doc" | tmux loadb -
+    echo "copied $doc"
+    sleep 0.2
+  elif [ "$act" == "fxfer" ]; then
+    selection=$(mktemp)
+    otherid=$( awk '
+      /^ *- \[.*\]\(\/zet\/[0-9]+\/README.md\)/ {
+        print $0
+        fflush()
+      }
+      ' "$doc" | fzf | awk '{print $2}' | implementation/parseids
+    )
+    if [ ! -z "$otherid" ]; then
+      ls "zet/$otherid" | fzf -m > $selection
+      for f in $(cat $selection); do
+        if [ ! -z "$f" ]; then
+          cp "zet/$otherid/$f" "zet/$id/$f"
+        fi
+      done
+    fi
+    rm "$selection"
+  elif [ "$act" == "xfer" ]; then
+    selection=$(mktemp)
+    export id
+    awk '
+      /^ *- \[.*\]\(\/zet\/[0-9]+\/README.md\)/ {
+        print $0
+        fflush()
+      }
+      END {
+        cmd = "find zet/" ENVIRON["id"] " -type f | grep -v README.md"
+        while ((cmd | getline) > 0) {
+          if ($0 !~ /^$/) print $0
+        }
+      }
+    ' "$doc" | fzf -m | awk '
+      /^ *- \[.*\]\(\/zet\/[0-9]+\/README.md\)/ { print | "implementation/parseids" }
+      /^zet\// { print }
+    ' | awk '
+      BEGIN { c = ENVIRON["EDITOR"] " -p " ENVIRON["doc"] " " }
+      /^[0-9]+/ { c = c " zet/" $0 "/README.md" }
+      /^zet\// { c = c " \047" $0 "\047" }
+      END { system(c) }
+      '
+  elif [ "$act" == "enrich" ]; then
+    echo ''
+    echo ' ╭────────────────────────────────┬───╮'
+    echo ' │          are you sure?       ┄ │ ╳ │'
+    echo ' ├────────────────────────────────┴───┤'
+    echo ' │ save your changes to git first     │'
+    echo ' │        answer (y/n):               │'
+    echo ' │           ╔ ╕ ╖ ╗                  │'
+    echo ' ╰────────────────────────────────────╯'
+    echo ''
+    if [ 0 == "$(git status --porcelain | wc -l)" ]; then
+      answer="y"
+    else
+      read -p "answer (y/n): " answer
+    fi
+    echo "answer (y/n): $answer"
+    if [ $answer == "y" ]; then
+      $prog enrich
+      $prog enrich
+      git add . # add all the files changed after enriching as a productivity step and to be aware of changes after
+      lazygit
+    else
+      echo $answer
+      sleep 1
+    fi
+  elif [ "$act" == "clone" ]; then
+    templateid=$(cat tagindex/templatemain.md | fzf | implementation/parseids)
+    if [[ "$templateid" =~ ^[0-9]+$ ]]; then
+      zet/20221014025416/clonecardto $templateid $id
+    fi
+  fi
+done
+rm "$selection"

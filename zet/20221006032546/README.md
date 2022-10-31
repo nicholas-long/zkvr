@@ -1,0 +1,71 @@
+# my original implementation of zet cmd
+
+
+name: zc
+- command line tool
+- uses github actions to automatically enrich and make references bidirectional
+- `browser` - fzf interactive markdown preview browsser that can traverse and edit links
+  - [20221013021614](/zet/20221013021614/README.md) terminal graph browser
+  - graph data entry and linking tool
+  - the full TUI implementation that will be released?
+  - can launch new tmux windows if tmux is running
+  - fzf selection window to select lots of references or spawn new nodes
+- installing
+    - `echo "$(pwd)/zc \$@" > ~/.local/bin/z`
+      - make sure `$HOME/.local/bin` is in your path
+      - still trying to figure out this shortcut since it's not perfect
+- for scripting
+  - [20221013221136](/zet/20221013221136/README.md) graph query language
+- `./zc menu` TUI feature is obsolete workflow loop - all functionality is now implemented in zkvr graph browser
+
+- dependencies
+  - vim or nvim
+  - fzf
+  - bat (the real one, not the kali package)
+  - lazygit
+
+- help text
+```
+./zc -h
+Usage: ./zc action [ options ]
+| action      : [ spawn, search, find, rm, print, enrich, new, refs, preview ]
+| | fzf       : [ menu, spawn, search, vilink, viunlink, connectome ]
+| | scripting : [ find, addref, addtag, deltag, rm, print, enrich, new, refs, preview, enum, unlink, enrich_links_single, fixspaces ]
+Options:
+    -m|--multiple
+    -p|--print
+    -e|--edit
+    -f|--file|--forwarding-address
+    -q|--query
+    -t|--title|--target|--tag
+    -r|--reference
+    -v|--verbose
+    -h|--help
+```
+
+- i think the project should be broken into 3 parts
+  - in order of dependencies:
+  - console utility (collection of scripts)
+  - graph query language
+  - graph browser, linker, editor, git workflow
+
+- added `saverefs` script for optimization
+  - partitions references between nodes into 100 files for quick lookup
+  - also because storing 500kb of files every commit is too much
+
+` zet/20221006032546/README.md `
+
+# Related
+
+- [20221013021614](/zet/20221013021614/README.md) terminal graph browser
+- [20221013221136](/zet/20221013221136/README.md) graph query language for zettelkasten
+- [20221008042814](/zet/20221008042814/README.md) WIP
+- [20221012144502](/zet/20221012144502/README.md) track modification dates
+- https://github.com/naps62/zk - another implementation in bash for reference
+- https://www.google.com/search?q=zettelkasten+fzf+vim ?
+- [20221027011800](/zet/20221027011800/README.md) testing bash wrapper subcommand implementation
+- [20221028173620](/zet/20221028173620/README.md) yq binaries
+
+Tags:
+
+    #zettelkasten #bash #coding #program #script #command #command #repo

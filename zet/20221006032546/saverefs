@@ -1,0 +1,6 @@
+#!/bin/bash
+
+export impl=20221006032546
+mkdir -p refs
+# partition refs
+find zet -name README.md | sort | xargs zet/$impl/scanrefs | awk '$1 == "ref" { box = substr($2,13); print $2, $3 > "refs/" box}'

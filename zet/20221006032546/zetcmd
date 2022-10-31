@@ -1,0 +1,511 @@
+#!/bin/bash
+
+#                        _        ___        ___   ___  
+#   ___ ___  _   _  ___ | |_ ___ / _ \__  __/ _ \ / _ \ 
+#  / __/ _ \| | | |/ _ \| __/ _ \ | | \ \/ / (_) | | | |
+# | (_| (_) | |_| | (_) | ||  __/ |_| |>  < \__, | |_| |
+#  \___\___/ \__, |\___/ \__\___|\___//_/\_\  /_/ \___/ 
+#            |___/                                      
+
+export ZET_CMD_IMPLEMENTATION=20221006032546
+export GRAPHBROWSER=20221013021614
+SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
+export prog="$0"
+if [ -z "$EDITOR" ]; then
+  EDITOR=$(which nvim 2>/dev/null || which vim 2>/dev/null || which vi 2>/dev/null )
+fi
+
+# run me as symlink from my directory or in somewhere with zet/
+# the SCRIPT_DIR of symlinked zc command will be the root of the zettelkasten folder
+[ -d zet ] || cd $SCRIPT_DIR && export prog="$SCRIPT_DIR/zc"
+
+# parse args with case statement
+VERBOSE=0
+makeedit=0
+mustprint=0
+multiple=0
+while [[ $# -gt 0 ]]; do
+  case $1 in
+    -m|--multiple)
+      multiple=1
+      ;;
+    -p|--print)
+      mustprint=1
+      ;;
+    -e|--edit)
+      makeedit=1
+      ;;
+    -f|--file|--forwarding-address)
+      shift
+      filearg="$1"
+      ;;
+    -q|--query)
+      shift # pop arg
+      query="$1"
+      ;;
+    -t|--title|--target|--tag)
+      shift # pop arg
+      title="$1"
+      ;;
+    -r|--reference)
+      shift # pop arg
+      reference="$1"
+      ;;
+    -v|--verbose)
+      VERBOSE=1
+      ;;
+    -h|--help)
+      echo "Usage: $0 action [ options ]"
+      echo "| action      : [ spawn, search, find, rm, print, enrich, new, refs, preview ]"
+      echo "| | fzf       : [ menu, spawn, search, vilink, viunlink, connectome ]"
+      echo "| | scripting : [ find, addref, addtag, deltag, rm, print, enrich, new, refs, preview, enum, unlink, enrich_links_single, fixspaces ]"
+      echo "Options:"
+      cat "$prog" | grep '^\s\+-.|--.*' | sed 's/)$//'
+      exit 1
+      ;;
+    *)
+      if [ -z "$action" ]; then
+        action="$1"
+      elif [ $action == "print" ]; then
+        bat --paging=never zet/$1/README.md
+      elif [ $action == "unlink" ]; then
+        arg="$1"
+        arg2="$2"
+        shift
+      else
+        arg="$1"
+      fi
+      #TODO: break for certain specific actions to keep rest of args for later
+      ;;
+  esac
+  shift
+done
+
+echo "[diag] $action $title $arg $filearg" > /dev/stderr
+case $action in
+  n|new)
+    id=$(date -u +%Y%m%d%H%M%S)
+    mkdir -p zet/$id
+    filepath="zet/$id/README.md"
+    cp zettel-template "$filepath"
+    if [ ! -z "$title" ]; then
+      sed -i "s|{{title}}|$title|" "$filepath"
+    fi
+    if [ ! -z "$reference" ]; then
+      $prog addref -t "$id" "$reference"
+    fi
+    sed -i "s|00000000000000|$id|" "$filepath"
+    if [ 0 != "$makeedit" ]; then
+      $EDITOR "$filepath"
+    fi
+    echo "created zet ID $id"
+    ;;
+  spawn)
+    if [ -z "$title" ]; then
+      read -p "enter title> " title
+    fi
+    ids=$(mktemp)
+    $prog find -q "$query" 2>/dev/null | fzf --preview="$prog preview -f {} 2>/dev/null" --preview-window=up -m "--prompt=$title >" | awk '
+      {
+        split($1,arr,"/")
+        id = arr[2]
+        print id
+      }
+      ' > $ids
+    newid=$($prog new -t "$title" | awk '/[Cc]reated [Zz]ett?e?l? ID/ { print $NF }')
+    echo "[diag] newid $newid" 2>/dev/stderr
+    sed -i '/{{ref}}/d' zet/$newid/README.md # remove template ref stub
+    for link in $(cat $ids); do
+      $prog addref -t "$newid" "$link"
+    done
+    rm $ids
+    echo "spawned new $newid" > /dev/stderr
+    $prog fixspaces "$newid"
+    $EDITOR zet/$newid/README.md
+    ;;
+  deltag)
+    tag="$title"
+    doc="$arg"
+    if [[ "$doc" =~ ^[0-9]+$ ]]; then
+      doc="zet/$arg/README.md"
+    fi
+    echo "removing tag $tag from $doc" > /dev/stderr
+    # remove tags and cleanup spaces from end and ensure 4 at beginning
+    sed -i -e '$s/#'$tag'//' -e '$s/ *$//' -e '$s/  */ /g' -e '$s/^ */    /' "$doc"
+    ;;
+  addtag)
+    tag="$title"
+    doc="$arg"
+    if [[ "$doc" =~ ^[0-9]+$ ]]; then
+      doc="zet/$arg/README.md"
+    fi
+    echo "adding tag $tag to $doc" > /dev/stderr
+    sed -i -e '$s/ *$//' -e '$s/$/ #'$tag'/' -e '$s/  */ /g' -e '$s/^ */    /' "$doc"
+    ;;
+  enum) # enum tags
+    #TODO: join tags with related tags in enum
+    find zet -name README.md | xargs awk '
+      BEGIN { OFS="\t" }
+      FNR == 1 {
+        gsub(/^# +/,"")
+        head = $0
+      }
+      { last = $0 }
+      BEGINFILE {
+        if (last) print lastfilename, head, last
+        lastfilename = FILENAME
+      }
+    '
+    ;;
+  refs)
+    awk '
+      BEGIN {
+        for (n = 1; n < ARGC; n++) {
+          if (ARGV[n] ~ /^[0-9]+$/) {
+            ARGV[n] = "zet/" ARGV[n] "/README.md"
+          }
+        }
+      }
+      BEGINFILE { refs = 0 }
+      #refs && /^ *$/ { nextfile }
+      refs && /^- [0-9]+ *$/ { print $2 } # print un-enriched IDs in list
+      refs && /^- \[[0-9]+\]/ {
+        gsub(/^- +/,"")
+        gsub(/^\[/,"")
+        gsub(/\].*/,"")
+        print
+      }
+      /^# [Rr]elated/ { refs = 1 }
+    ' $arg
+    ;;
+  menu)
+    while [ 1 ]; do
+      selection=$(mktemp)
+      (cat << EOF
+browser
+lazygit
+spawn
+enrich
+search -p
+search -e
+vilink
+viunlink
+connectome
+quitter
+EOF
+      ) | fzf --preview="zet/$ZET_CMD_IMPLEMENTATION/previewgit" --preview-window=up "--prompt=pull first> " > $selection
+      export answer=$(cat $selection) # have to export this or if does not work as intended - why?
+      if [ "$answer" == "" ]; then
+        exit 0
+      elif [ "$answer" == "lazygit" ]; then
+        lazygit || (git status && sleep 5)
+      elif [ "$answer" == "quitter" ]; then
+        exit 0
+      elif [ "$answer" == "browser" ]; then
+        zet/$GRAPHBROWSER/graphbrowser
+      elif [ "$answer" == "enrich" ]; then
+        $prog enrich
+        $prog enrich # do it twice for now
+      else
+        $prog $answer
+      fi
+      rm "$selection"
+    done
+    ;;
+  connectome)
+    if [ 0 != "$multiple" ]; then
+      export extraargs="-m "
+    fi
+    find zet -name README.md | xargs awk '
+      BEGIN { OFS="\t" }
+      FNR == 1 {
+        gsub(/^# +/,"")
+        head = $0
+      }
+      /^# Related/,/^Tags/ { if ($0 ~ /^- /) print FILENAME, head, $0 }
+      ENDFILE { print FILENAME, head, "" }
+    ' | fzf $extraargs --preview="$prog preview -f {} 2>/dev/null" --preview-window=up "--prompt=$arg"
+    ;;
+  search) # fuzzy search with optional content filter
+    if [ -z "$query" ]; then
+      query="$arg"
+    fi
+    if [ 0 != "$makeedit" ]; then
+      $prog find -q "$query" | fzf -m --preview="$prog preview -f {} 2>/dev/null" | awk '{print $1}' | xargs $EDITOR -p # does this work in normal vim?
+    else
+      selections=$(mktemp)
+      $prog find -q "$query" | fzf -m --preview="$prog preview -f {} 2>/dev/null" --preview-window=up > $selections
+      if [ 1 == $mustprint ]; then
+        awk '{print $1}' "$selections" | xargs -n 1 $prog preview -f
+      else
+        awk '{print $1}' "$selections"
+      fi
+      rm "$selections"
+    fi
+    ;;
+  find) # full content search
+    if [ -z "$query" ]; then
+      query="$arg"
+    fi
+    find zet -name README.md | xargs grep "$query" | awk -F ':' '
+      BEGIN { OFS="\t" }
+      !seen[$1]++ {
+        command = "head -n 1 " $1
+        command | getline heading
+        close(command)
+        gsub(/^# /, "", heading)
+        outkw = ""
+        for (n = 2; n <= NF; n++){
+          if (outkw) outkw = outkw " "
+          outkw = outkw $n
+        }
+        print $1, heading, outkw
+      }
+      '
+    ;;
+  vilink) # visual linking # change to connectome ?
+    export start_id=$($prog connectome "select 1>" | zet/$ZET_CMD_IMPLEMENTATION/parseids)
+    $prog connectome -m "select many>" | zet/$ZET_CMD_IMPLEMENTATION/parseids | awk '
+      {
+        latestid = $0
+        command = (ENVIRON["prog"] " addref -t " ENVIRON["start_id"] " " latestid)
+        system(command)
+      }
+    '
+    ;;
+  viunlink) # unlink 1 node from its connections
+    export start_id=$($prog connectome "select 1>" | zet/$ZET_CMD_IMPLEMENTATION/parseids)
+    readfile="zet/$start_id/README.md"
+    awk '
+    BEGIN { pr = 0 }
+    pr && /^- / { print }
+    NR > 1 && /^# Related/ { pr = 1 }
+    ' $readfile | fzf -m | zet/$ZET_CMD_IMPLEMENTATION/parseids | awk '
+      {
+        latestid = $0
+        command = (ENVIRON["prog"] " unlink " ENVIRON["start_id"] " " latestid)
+        #print(command)
+        system(command)
+      }
+    '
+    ;;
+  preview)
+    if [ ! -z "$filearg" ]; then
+      filearg=$(echo $filearg | awk '{print $1}')
+      bat --language=md --paging=never --style=plain --color=always "$filearg"
+    fi
+    ;;
+  unlink)
+    #arg arg2
+    echo "unlinking $arg $arg2" > /dev/stderr
+    [ -f "zet/$arg2/README.md" ] && sed -i "/$arg/d" zet/$arg2/README.md
+    [ -f "zet/$arg/README.md" ] && sed -i "/$arg2/d" zet/$arg/README.md
+    ;;
+  rm)
+    del_id="$arg"
+    forward_id="$filearg"
+    echo "$del_id -> $forward_id" > /dev/stderr
+    if [ -z "$del_id" ]; then
+      echo "unrecoverable error" > /dev/stderr
+      exit 1
+    fi
+    if [ -z "$forward_id" ]; then
+      echo "forwarding id is required to delete, pass with -f" > /dev/stderr
+      exit 1
+    fi
+    find zet -name README.md | xargs sed -i "/$del_id/s/^.*$/- $forward_id/"
+    rm -rf zet/$del_id
+    #$prog enrich # don't do this automatically
+    ;;
+  addref)
+    target="$title"
+    f="zet/$target/README.md"
+    d="zet/$target"
+    export linktoid="$arg"
+    if [ -d "$d" ]; then
+      if [ -f "$f" ]; then
+        replacefile=$(mktemp)
+        awk '
+          /^# Related/ { print; print ""; parsing = 1; next }
+          !parsing { print; next }
+          /^$/ { next }
+          /^Tags:/ {
+            line = $0
+            id = ENVIRON["linktoid"]
+            file = "zet/" id "/README.md"
+            getline < file
+            header = $0
+            gsub(/^# /,"",header)
+            print "-", "[" id "](/zet/" id "/README.md)", header
+            print ""
+            print line
+            print ""
+            next
+          }
+          { print }
+        ' "$f" > $replacefile
+        mv "$replacefile" "$f"
+      fi
+    fi
+    ;;
+  enrich_links_single)
+    zid="$arg"
+    if [ -z "$zid" ]; then
+      continue
+    fi
+    #get references
+    cd zet/$zid
+    cat README.md | awk '
+    pr && /^#/ { exit }
+    pr { print }
+    /^# [Rr]elated/ { pr = 1 }
+    ' > references
+    awk '
+    BEGIN { seen[""] = 0 }
+    BEGINFILE { delete seen ; seen[""] = 0 }
+    /^- [0-9]{14} *$/ {
+      id = $2
+      if (seen[id]) { next }
+      seen[id] = 1
+      "head -n 1 ../" id "/README.md" | getline heading
+      gsub(/^# ?/,"",heading)
+      if (system("test -f ../" id "/README.md") == 0) {
+        print "- [" id "](/zet/" id "/README.md) " heading
+      }
+      next
+    }
+    /^- \[[0-9]{14}\]/ { # parse and reprint pretty references
+      temp = $0
+      gsub(/^- \[/, "", temp)
+      gsub(/].*$/,"", temp)
+      id = temp
+      if (seen[id]) { next }
+      seen[id] = 1
+      "head -n 1 ../" id "/README.md" | getline heading
+      gsub(/^# ?/,"",heading)
+      if (system("test -f ../" id "/README.md") == 0) {
+        print "- [" id "](/zet/" id "/README.md) " heading
+      }
+      next
+    }
+    { print }
+    ' references > references_enriched
+
+    { awk '/^# [Rr]elated/ { exit } { print }' README.md
+    echo "# Related"
+    cat references_enriched
+    } > README_enriched.md
+
+    # overwrite
+    mv README_enriched.md README.md
+    rm references
+    rm references_enriched
+
+    cd - > /dev/null
+    ;;
+  fixspaces)
+    id="$arg"
+    tf=$(mktemp)
+    zet/$ZET_CMD_IMPLEMENTATION/fixlines zet/$id/README.md > $tf
+    mv "$tf" "zet/$id/README.md"
+    ;;
+  enrich)
+    scanoutput=$(mktemp)
+    # get all tags
+    tail -n 1 zet/*/README.md | awk '/^    #/' | sed -e 's/^    //g' -e 's/ /\n/g' | LC_COLLATE=C sort -u -f > all_tags
+    # get headings by parsing the output of calling the head command with many files
+    find zet -name README.md | sort | xargs head -n 1 | awk '
+      BEGIN { OFS="\t" }
+      /==>/ {
+        f=$2
+        next
+      }
+      !/^$/ {
+        gsub(/^# /,"")
+        id = f
+        gsub(/zet\//,"",id)
+        gsub(/\/README.md/,"",id)
+        print id, f, $0
+      }' > id_headings
+
+    find zet -name README.md | xargs zet/$ZET_CMD_IMPLEMENTATION/scanrefs > $scanoutput
+
+    # index tags
+    rm -rf tagindex
+    mkdir -p tagindex
+
+    awk '
+      BEGIN {
+        ignore["assorted"] = 1
+        FS = "\t"
+        while ((getline < "id_headings") > 0) {
+          heading_for[$1] = $3
+        }
+        FS = " "
+      }
+      $1 == "tags" {
+        for (n=3;n<=NF;n++) {
+          t = $n
+          gsub(/^#/,"",t)
+          if (!(t in ignore)) {
+            heading = heading_for[$2]
+            print "- [" $2 "](/zet/" $2 "/README.md) " heading | ("sort -u > tagindex/" t ".md")
+          }
+        }
+      }
+    ' $scanoutput
+
+    # check backlinks
+    awk '
+      $1 == "backlink" {
+        # link $2 to $3
+        command = (ENVIRON["prog"] " addref -t " $2 " " $3)
+        system ( command )
+      }
+      ' $scanoutput
+
+    # rerun
+    find zet -name README.md | xargs zet/$ZET_CMD_IMPLEMENTATION/scanrefs > $scanoutput
+
+    # beautify links
+    awk '$1 == "cleanup" || $1 == "duplicate" {
+      command = (ENVIRON["prog"] " enrich_links_single " $2)
+      system ( command )
+    }' $scanoutput
+
+    awk '$1 == "dead" {
+      print
+      command = (ENVIRON["prog"] " unlink " $2 " " $3)
+      system ( command )
+    }' $scanoutput
+
+    # fix spaces
+    awk '
+      $1 == "emptylines" {
+        command = (ENVIRON["prog"] " fixspaces " $2)
+        system ( command )
+      }
+      ' $scanoutput
+    # spaces are fixed.
+
+    #TODO: need to redo anything?
+
+    # run every autoexec_enrich, passing in the script's full path
+    find zet -executable -name autoexec_enrich | awk '
+    BEGIN {
+      FS = OFS = "/"
+      "pwd" | getline wd
+      close("pwd")
+    }
+    {
+      file = $0
+      "realpath " file | getline
+      NF--
+      scriptpath = $0
+      print "executing script", file > "/dev/stderr"
+      system(file " " wd " " scriptpath)
+    }
+    '
+    zet/$ZET_CMD_IMPLEMENTATION/saverefs # generate list of refs
+    ;;
+esac
