@@ -15,12 +15,11 @@ hub node for `workflow`
 # Related
 
 - [20221012144502](/zet/20221012144502/README.md) track modification dates
-- [20221009192000](/zet/20221009192000/README.md) stuff to put on main page
 - [20221006213953](/zet/20221006213953/README.md) video notes
 - [20221008042814](/zet/20221008042814/README.md) WIP
 - [20221003150098](/zet/20221003150098/README.md) TODO
 - [20221007044552](/zet/20221007044552/README.md) todo or to-try list
-- [20221101043303](/zet/20221101043303/README.md) important features and workflow tricks to mention
+- [20221101043303](/zet/20221101043303/README.md) important features and workflow tricks to mention on main page
 
 Tags:
 

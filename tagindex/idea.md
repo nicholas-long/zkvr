@@ -4,4 +4,4 @@
 - [20221023085822](/zet/20221023085822/README.md) implement returning paths or tables in graph query language
 - [20221027011800](/zet/20221027011800/README.md) testing bash wrapper subcommand implementation
 - [20221028173620](/zet/20221028173620/README.md) yq binaries
-- [20221101043303](/zet/20221101043303/README.md) important features and workflow tricks to mention
+- [20221101043303](/zet/20221101043303/README.md) important features and workflow tricks to mention on main page
