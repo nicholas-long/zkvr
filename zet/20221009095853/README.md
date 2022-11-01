@@ -10,6 +10,7 @@ things that are finished.
 - [20221014215609](/zet/20221014215609/README.md) finished, but with ongoing related work
 - [20221012144502](/zet/20221012144502/README.md) track modification dates
 - [20221028172836](/zet/20221028172836/README.md) symlink dockerfile
+- [20221009192000](/zet/20221009192000/README.md) stuff to put on main page
 
 Tags:
 

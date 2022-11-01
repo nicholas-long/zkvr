@@ -6,9 +6,13 @@ a script will check to see if the ID numbers appear on the main README.
 
 ```
 Missing:
+- [20221003150098](/zet/20221003150098/README.md) todo 
 - [20221006032546](/zet/20221006032546/README.md) my original implementation of zet cmd #zettelkasten #bash #coding #program #script #command #command #repo
 - [20221006213953](/zet/20221006213953/README.md) video notes #video #notes #hub #videonotes
+- [20221007044552](/zet/20221007044552/README.md) todo or to-try list #todo #list #to-try-list #hub
+- [20221009095853](/zet/20221009095853/README.md) finished #done #hub
 - [20221013021614](/zet/20221013021614/README.md) terminal graph browser #feature #tui #program
+- [20221014215609](/zet/20221014215609/README.md) finished, but with ongoing related work #idea #meta
 Extra:
 ```
 
