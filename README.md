@@ -4,6 +4,10 @@ Zettelkasten Note-Taking Terminal User Interface graph linker, editor, and cli q
 
 - [zkvr terminal graph browser #tui #program documentation](/zet/20221013021614/README.md)
 
+# navigation links
+
+## search by [tags](/tagindex/)
+
 ## hubs
 
 - [todo list #hub](/zet/20221007044552/README.md)
