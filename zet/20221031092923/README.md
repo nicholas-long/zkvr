@@ -12,6 +12,7 @@
 - [20221006213953](/zet/20221006213953/README.md) video notes
 - *INSERT LINK THERE:* <>
 - [20221012171100](/zet/20221012171100/README.md) recently created nodes hub
+- [20221009192000](/zet/20221009192000/README.md) stuff to put on main page
 
 Tags:
 
