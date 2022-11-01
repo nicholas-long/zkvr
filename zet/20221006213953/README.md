@@ -15,6 +15,7 @@
 - [20221008042814](/zet/20221008042814/README.md) WIP
 - [20221009192000](/zet/20221009192000/README.md) stuff to put on main page
 - [20221006013313](/zet/20221006013313/README.md) zettelkasten
+- [20221031092923](/zet/20221031092923/README.md) template for video notes
 
 Tags:
 
