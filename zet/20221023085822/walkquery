@@ -64,7 +64,7 @@ while [[ $# -gt 0 ]]; do
     awk '
       { id = $1 }
       {
-        cmd = "implementation/quickrefs " id " 2>/dev/null"
+        cmd = "./zc refs " id " 2>/dev/null"
         while ((cmd | getline) > 0) {
           print id, $0
         }
