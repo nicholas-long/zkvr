@@ -11,6 +11,8 @@ things that are finished.
 - [20221012144502](/zet/20221012144502/README.md) track modification dates
 - [20221028172836](/zet/20221028172836/README.md) symlink dockerfile
 - [20221009192000](/zet/20221009192000/README.md) stuff to put on main page
+- [20221026064448](/zet/20221026064448/README.md) check syntax of dash lists for tabstop 4
+- [20221008063052](/zet/20221008063052/README.md) autorunning scripts in cards
 
 Tags:
 

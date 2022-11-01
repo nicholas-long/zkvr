@@ -71,6 +71,8 @@ Options:
 - [20221006013313](/zet/20221006013313/README.md) zettelkasten
 - [20221014074318](/zet/20221014074318/README.md) important choices of tech stack
 - [20221025024238](/zet/20221025024238/README.md) enumerate tags
+- [20221007193324](/zet/20221007193324/README.md) github actions
+- [20221008063052](/zet/20221008063052/README.md) autorunning scripts in cards
 
 Tags:
 

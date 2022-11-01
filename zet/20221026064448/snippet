@@ -1,0 +1,16 @@
+#!/bin/bash
+
+awk '
+BEGINFILE { snip = 0 }
+/```/ { snip = !snip }
+!snip && /^ *- / {
+  m = match($0, /^ */)
+  space = RLENGTH
+  if (space - lastspace > 2) {
+    print FILENAME, $0
+    nextfile # only report first issue in file
+  }
+  lastspace = space
+}
+/^# Related/ { nextfile }
+' $(find zet -name README.md | LC_COLLATE=C sort -u )

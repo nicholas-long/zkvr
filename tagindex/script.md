@@ -1,2 +1,3 @@
 - [20221006032546](/zet/20221006032546/README.md) my original implementation of zet cmd
+- [20221008063052](/zet/20221008063052/README.md) autorunning scripts in cards
 - [20221025024238](/zet/20221025024238/README.md) enumerate tags

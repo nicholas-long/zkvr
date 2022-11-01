@@ -1,0 +1,1 @@
+- [20221026064448](/zet/20221026064448/README.md) check syntax of dash lists for tabstop 4

@@ -40,6 +40,7 @@
 - [20221007043646](/zet/20221007043646/README.md) findings about implementing zettelkasten
 - [20221006032546](/zet/20221006032546/README.md) my original implementation of zet cmd
 - [20221008042814](/zet/20221008042814/README.md) WIP
+- [20221008063052](/zet/20221008063052/README.md) autorunning scripts in cards
 
 Tags:
 

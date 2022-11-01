@@ -1,0 +1,4 @@
+#!/bin/bash
+
+echo "enumerating cards with scripts..."
+find zet -name autoexec_enrich | LC_COLLATE=C sort

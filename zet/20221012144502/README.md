@@ -33,6 +33,7 @@ ln -s zet/20221012144502 trackmoddate
 - [20221009095853](/zet/20221009095853/README.md) finished
 - [20221006084204](/zet/20221006084204/README.md) future enhancements to zet cmd
 - [20221008061845](/zet/20221008061845/README.md) workflow
+- [20221008063052](/zet/20221008063052/README.md) autorunning scripts in cards
 
 Tags:
 

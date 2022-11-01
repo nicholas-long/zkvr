@@ -2,6 +2,7 @@
 - [20221013221136](/zet/20221013221136/README.md) graph query language for zettelkasten
 - [20221014074318](/zet/20221014074318/README.md) important choices of tech stack
 - [20221023085822](/zet/20221023085822/README.md) implement returning paths or tables in graph query language
+- [20221026064448](/zet/20221026064448/README.md) check syntax of dash lists for tabstop 4
 - [20221027011800](/zet/20221027011800/README.md) testing bash wrapper subcommand implementation
 - [20221028173620](/zet/20221028173620/README.md) yq binaries
 - [20221101043303](/zet/20221101043303/README.md) important features and workflow tricks to mention on main page

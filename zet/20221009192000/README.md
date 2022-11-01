@@ -6,6 +6,7 @@ a script will check to see if the ID numbers appear on the main README.
 
 ```
 Missing:
+- [20221008063052](/zet/20221008063052/README.md) autorunning scripts in cards #zettelkasten #bash #script #template #test
 - [20221101043303](/zet/20221101043303/README.md) important features and workflow tricks to mention on main page #idea #list
 Extra:
 ```
@@ -24,6 +25,7 @@ Extra:
 - [20221014215609](/zet/20221014215609/README.md) finished, but with ongoing related work
 - [20221031092923](/zet/20221031092923/README.md) template for video notes
 - [20221101043303](/zet/20221101043303/README.md) important features and workflow tricks to mention on main page
+- [20221008063052](/zet/20221008063052/README.md) autorunning scripts in cards
 
 Tags:
 
