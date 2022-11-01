@@ -11,6 +11,7 @@
 - spawning
 - cloning
   - from tempalate card network
+- links work in obsidian graph view
 
 - make it look pretty
   - get a screenshot
