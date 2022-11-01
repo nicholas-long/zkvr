@@ -99,6 +99,7 @@ while [ 1 == "$going" ]; do
     print "quit"
     fflush()
   }
+  #/[0-9]{13}/ { print "goto", $0 }
   /^ *- \[.*\]\(\/zet\/[0-9]+\/README.md\)/ {
     print "goto", $0
     fflush()

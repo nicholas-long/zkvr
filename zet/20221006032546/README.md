@@ -70,6 +70,7 @@ Options:
 - [20221007043646](/zet/20221007043646/README.md) findings about implementing zettelkasten
 - [20221006013313](/zet/20221006013313/README.md) zettelkasten
 - [20221014074318](/zet/20221014074318/README.md) important choices of tech stack
+- [20221025024238](/zet/20221025024238/README.md) enumerate tags
 
 Tags:
 

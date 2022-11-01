@@ -1,0 +1,16 @@
+#!/usr/bin/awk -f
+
+{ last = $0 }
+ENDFILE {
+  gsub(/^ */,"",last)
+  gsub(/ *$/,"",last)
+  split(last,arr," ")
+  for (n=1; n <= length(arr); n++) {
+    tag = arr[n]
+    gsub(/^#/,"",tag)
+    if (tag !~ /^ *$/) {
+      if (ARGC > 2 ) print FILENAME, tag
+      else print tag
+    }
+  }
+}

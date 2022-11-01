@@ -16,10 +16,10 @@ stuff i am working on.
 - [20221006084204](/zet/20221006084204/README.md) future enhancements to zet cmd
 - [20221009192000](/zet/20221009192000/README.md) stuff to put on main page
 - [20221007044552](/zet/20221007044552/README.md) todo or to-try list
-- [20221003150098](/zet/20221003150098/README.md) todo
+- [20221003150098](/zet/20221003150098/README.md) TODO
 - [20221024215216](/zet/20221024215216/README.md) future enhancements to graph query language
 - [20221014215609](/zet/20221014215609/README.md) finished, but with ongoing related work
 
 Tags:
 
-    #todo
+    #todo #hub

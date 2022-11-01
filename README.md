@@ -6,10 +6,10 @@ Zettelkasten Note-Taking Terminal User Interface graph linker, editor, and cli q
 
 ## hubs
 - [todo list #hub](/zet/20221007044552/README.md)
-  - [20221003150098](/zet/20221003150098/README.md) todo 
+  - [todo ](/zet/20221003150098/README.md)
   - [WIP work in progress](/zet/20221008042814/README.md)
-  - [20221014215609](/zet/20221014215609/README.md) finished, but with ongoing related work #idea #meta
-  - [20221009095853](/zet/20221009095853/README.md) finished #done #hub
+  - [finished, but with ongoing related work #idea #meta](/zet/20221014215609/README.md)
+  - [finished #done #hub](/zet/20221009095853/README.md)
 
 - [video notes #hub](/zet/20221006213953/README.md)
 
@@ -20,3 +20,5 @@ Zettelkasten Note-Taking Terminal User Interface graph linker, editor, and cli q
 - example templates
 
 - [stuff that should be on this page](/zet/20221009192000/README.md)
+
+- [20221101041318](/zet/20221101041318/README.md) debug issue with links on main page #idea
