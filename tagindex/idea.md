@@ -1,5 +1,7 @@
 - [20221012144502](/zet/20221012144502/README.md) track modification dates
 - [20221013221136](/zet/20221013221136/README.md) graph query language for zettelkasten
+- [20221014074318](/zet/20221014074318/README.md) important choices of tech stack
+- [20221014215609](/zet/20221014215609/README.md) finished, but with ongoing related work
 - [20221023085822](/zet/20221023085822/README.md) implement returning paths or tables in graph query language
 - [20221027011800](/zet/20221027011800/README.md) testing bash wrapper subcommand implementation
 - [20221028173620](/zet/20221028173620/README.md) yq binaries

@@ -1,6 +1,5 @@
 # findings about implementing zettelkasten
 
-![20221010184202](/zet/20221010184202/screenshot_improvement.png)
 
 - open a chrome window for zet video notes and launch tab from there - workflow
   - can put in new workspace, but i like to do work in terminal so put terminal in workspace next to it
@@ -129,41 +128,11 @@
 
 # Related
 
-- [20221021182334](/zet/20221021182334/README.md) project issue workflow
-- [20221012090359](/zet/20221012090359/README.md) first post from netbook
-- [20221009104752](/zet/20221009104752/README.md) stuff to research
-- [20221014073148](/zet/20221014073148/README.md) reasoning behind choices for tech stack - finding dependable and long lasting technology
-- [20221014072547](/zet/20221014072547/README.md) ideas need to be explained and connected to relevant things
-- [20221014070023](/zet/20221014070023/README.md) findings from implementing deep connectome search
-- [20221014023054](/zet/20221014023054/README.md) distinct workflow operations i do in this zettelkasten
-- [20221013180437](/zet/20221013180437/README.md) differences organizing zettelkasten in graph vs files in hierarchy
 - [20221008042814](/zet/20221008042814/README.md) WIP
-- [20221007192111](/zet/20221007192111/README.md) the first zettel generated from github
-- [20221012095659](/zet/20221012095659/README.md) working in github in the same branch on multiple devices
-- [20221012090938](/zet/20221012090938/README.md) my One Mix netbook
-- [20221012083444](/zet/20221012083444/README.md) building out structure, organization, and architecture quickly
-- [20221008183326](/zet/20221008183326/README.md) findings about video notes
-- [20221011193153](/zet/20221011193153/README.md) collection of zettelkasten tips from youtube
-- [20221010184202](/zet/20221010184202/README.md) screenshots of github ui graph showing workflow acceleration
-- [20221007043259](/zet/20221007043259/README.md) zettelkasten generic ideas
 - [20221009192000](/zet/20221009192000/README.md) stuff to put on main page
-- [20221008214406](/zet/20221008214406/README.md) sharing programming projects with zettelkasten
-- [20221008050923](/zet/20221008050923/README.md) tmux buffers as bash script pipe debug file buffer
-- [20221008052510](/zet/20221008052510/README.md) 80-20 rule
-- [20221006013612](/zet/20221006013612/README.md) markdown to zettelkasten conversion project
-- [20221007175034](/zet/20221007175034/README.md) optimizations for enrichment process
-- [20221003151267](/zet/20221003151267/README.md) fzf
 - [20221006084204](/zet/20221006084204/README.md) future enhancements to zet cmd
-- [20221006032933](/zet/20221006032933/README.md) problems / issues with zet cmd
-- [20221003151350](/zet/20221003151350/README.md) awk and bash scripting
-- [20221003151299](/zet/20221003151299/README.md) bash tricks
-- [20221003151424](/zet/20221003151424/README.md) bash scripts
 - [20221006032546](/zet/20221006032546/README.md) my original implementation of zet cmd
 - [20221006013313](/zet/20221006013313/README.md) zettelkasten
-- [20221026181955](/zet/20221026181955/README.md) keep track of tags attached to to-try lists
-- [20221010183037](/zet/20221010183037/README.md) importing zettelkasten data
-- [20221030082715](/zet/20221030082715/README.md) findings from converting markdown info to zet
-- [20221031192031](/zet/20221031192031/README.md) all cards required for implementation
 
 Tags:
 

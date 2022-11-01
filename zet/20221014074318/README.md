@@ -25,16 +25,7 @@
 
 # Related
 
-- [20221014074726](/zet/20221014074726/README.md) use appropriate language for the job
-- [20221003150067](/zet/20221003150067/README.md) vim
-- [20221008215400](/zet/20221008215400/README.md) file
-- [20221008213254](/zet/20221008213254/README.md) file path
-- [20221003151350](/zet/20221003151350/README.md) awk and bash scripting
-- [20221014073148](/zet/20221014073148/README.md) reasoning behind choices for tech stack - finding dependable and long lasting technology
-- [20221006033248](/zet/20221006033248/README.md) rwxrob
 - [20221006032546](/zet/20221006032546/README.md) my original implementation of zet cmd
-- [20221008214406](/zet/20221008214406/README.md) sharing programming projects with zettelkasten
-- [20221031192031](/zet/20221031192031/README.md) all cards required for implementation
 
 Tags:
 

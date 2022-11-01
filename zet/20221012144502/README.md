@@ -30,6 +30,8 @@ ln -s zet/20221012144502 trackmoddate
 
 - [20221012171100](/zet/20221012171100/README.md) recently created nodes hub
 - [20221006032546](/zet/20221006032546/README.md) my original implementation of zet cmd
+- [20221009095853](/zet/20221009095853/README.md) finished
+- [20221006084204](/zet/20221006084204/README.md) future enhancements to zet cmd
 
 Tags:
 

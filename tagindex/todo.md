@@ -1,2 +1,5 @@
+- [20221006084204](/zet/20221006084204/README.md) future enhancements to zet cmd
+- [20221007044552](/zet/20221007044552/README.md) todo or to-try list
 - [20221008042814](/zet/20221008042814/README.md) WIP
 - [20221013221136](/zet/20221013221136/README.md) graph query language for zettelkasten
+- [20221024215216](/zet/20221024215216/README.md) future enhancements to graph query language

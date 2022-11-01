@@ -1,1 +1,4 @@
+- [20221006213953](/zet/20221006213953/README.md) video notes
+- [20221007044552](/zet/20221007044552/README.md) todo or to-try list
+- [20221009095853](/zet/20221009095853/README.md) finished
 - [20221012171100](/zet/20221012171100/README.md) recently created nodes hub
