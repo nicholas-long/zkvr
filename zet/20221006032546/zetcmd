@@ -506,6 +506,6 @@ EOF
       system(file " " wd " " scriptpath)
     }
     '
-    zet/$ZET_CMD_IMPLEMENTATION/saverefs # generate list of refs
+    #zet/$ZET_CMD_IMPLEMENTATION/saverefs # generate list of refs
     ;;
 esac

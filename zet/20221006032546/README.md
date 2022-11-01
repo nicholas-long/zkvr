@@ -51,6 +51,7 @@ Options:
 - added `saverefs` script for optimization
   - partitions references between nodes into 100 files for quick lookup
   - also because storing 500kb of files every commit is too much
+  - disabled saverefs because it produces excess noise now
 
 ` zet/20221006032546/README.md `
 
