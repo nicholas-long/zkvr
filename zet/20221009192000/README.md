@@ -6,7 +6,6 @@ a script will check to see if the ID numbers appear on the main README.
 
 ```
 Missing:
-- [20221031092923](/zet/20221031092923/README.md) template for video notes #templatemain #videonotes #notes
 Extra:
 ```
 
