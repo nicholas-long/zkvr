@@ -1,9 +1,8 @@
 # my original implementation of zet cmd
 
-
 name: zc
-- command line tool
-- uses github actions to automatically enrich and make references bidirectional
+- command line tool based on <https://github.com/rwxrob/zet>
+- uses github actions to automatically enrich content, run scripts, and make references bidirectional
 - `browser` - fzf interactive markdown preview browsser that can traverse and edit links
   - [20221013021614](/zet/20221013021614/README.md) terminal graph browser
   - graph data entry and linking tool
