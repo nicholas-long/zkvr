@@ -5,6 +5,7 @@ Zettelkasten Note-Taking Terminal User Interface graph linker, editor, and cli q
 - [zkvr terminal graph browser #tui #program documentation](/zet/20221013021614/README.md)
 
 ## hubs
+
 - [todo list #hub](/zet/20221007044552/README.md)
   - [todo](/zet/20221003150098/README.md)
   - [work in progress WIP](/zet/20221008042814/README.md)
@@ -15,9 +16,10 @@ Zettelkasten Note-Taking Terminal User Interface graph linker, editor, and cli q
 
 ## templates
 
+- [template for video notes #templatemain #videonotes #notes](/zet/20221031092923/README.md)
+
+## implementation
+
 - [CLI docs](/zet/20221006032546/README.md)
-
-- example templates
-  - [template for video notes #templatemain #videonotes #notes](/zet/20221031092923/README.md)
-
-- [stuff that should be on this page](/zet/20221009192000/README.md)
+- [autorunning scripts in cards #zettelkasten #bash #script #template #test](/zet/20221008063052/README.md)
+  - [stuff that should be on this page](/zet/20221009192000/README.md)
