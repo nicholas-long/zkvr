@@ -6,6 +6,8 @@ a script will check to see if the ID numbers appear on the main README.
 
 ```
 Missing:
+- [20221008061845](/zet/20221008061845/README.md) workflow #workflow #optimization #hub #concept
+- [20221101043303](/zet/20221101043303/README.md) important features and workflow tricks to mention #idea #list
 Extra:
 ```
 
@@ -22,6 +24,8 @@ Extra:
 - [20221009095853](/zet/20221009095853/README.md) finished
 - [20221014215609](/zet/20221014215609/README.md) finished, but with ongoing related work
 - [20221031092923](/zet/20221031092923/README.md) template for video notes
+- [20221101043303](/zet/20221101043303/README.md) important features and workflow tricks to mention
+- [20221008061845](/zet/20221008061845/README.md) workflow
 
 Tags:
 
