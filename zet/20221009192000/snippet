@@ -1,0 +1,19 @@
+#!/bin/bash
+# script for checking stuff on the main page
+export CARD_ID=20221009192000
+export implementation=20221006032546
+references=$(mktemp)
+found=$(mktemp)
+
+echo "checking stuff on the main page... $@" >/dev/stderr
+
+mainreadme="./README.md"
+
+echo "Missing:"
+./graphquery --human id $CARD_ID : not $mainreadme # all references in this card that are not on README.md
+echo "Extra:"
+./graphquery --human $mainreadme not <( ./graphquery @meta ) not <( ./graphquery id $CARD_ID : ) # all ids on the main page that are not tagged #meta and not referenced in this card
+
+
+rm "$references"
+rm "$found"

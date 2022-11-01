@@ -1,0 +1,170 @@
+# findings about implementing zettelkasten
+
+![20221010184202](/zet/20221010184202/screenshot_improvement.png)
+
+- open a chrome window for zet video notes and launch tab from there - workflow
+  - can put in new workspace, but i like to do work in terminal so put terminal in workspace next to it
+  - notes together with video and side research spawned from ideas watching it
+- this is a functioning graph database written in like 350 lines of bash and awk
+- can tag the cards by adding files: find files by name to list
+- i can find information with links and add info to anything from anywhere
+  - integrated vscode in github platform
+- it is so easy to add tons of links when creating a zettel using fzf as a first step
+  - `spawn` action
+- links improve the content by adding context
+- numbering sequentially based on timestamps can be an arbitrary ordering imposed on zettels
+- if you want some hierarchies and directory structure to find things while working on something in the terminal, make some symlinks to the zet directories
+- some links should be one-way links
+  - ex: bash scripts is a list of all bash scripts and other things relevant to bash
+    - remove a backlink to something, but keep scripts indexed by leaving link from ` bash -> thing `.
+  - machines need one way links
+  - people are good at reading context but bad at navigating complicated UIs until they have a much higher level of experience with them, so links to documentation should be two way or you will get lost and waste time
+- converting files from markdown hierarchy of headings
+  - creates really sparsely linked cards - need way more links!
+- cool regular expression for searching tags in vscode `^- \[[0-9]+].*git`
+- can view on github with lynx if you search stuff with `/` to bypass huge text navbars
+  - renders in colorized markdown way that looks kinda like bat
+  - things have been converted so many times... `markdown -> html -> HTTP -> lynx -> html -> colorized text`
+- search content?
+  - `./zc search -q .`
+- zettel about what you are working on is really useful
+  - direct hotlinks to stuff you are doing like to do list
+  - already traversing a graph of web page links and scripts when doing normal web browsing
+- graph searching concepts
+  - if i want to get to a topic, i know a good path to get there through these links
+  - i can be working on one thing and get to any other notes with 2-5 clicks
+  - only have to remember which things are connected together to navigate the "UI"
+- i'm not an expert at designing these yet
+  - research graph theory
+- issue tracking workflow nodes
+  - github has issue tracking - it should be possible to open issues in github and type in zettel IDs and have a relevant zettel linking everything together
+  - list of nodes
+    - todo
+    - wip
+    - done
+  - make concepts for each
+  - make instance for project node
+    - connect to concept node, i.e. a project's todo list is an instance of a "todo list concept" and connected to the project
+      - easy to find it
+- i can't watch a video without thinking of ideas, and i can get to a relevant card in 2 or 3 clicks to write them down
+- git already tracks file changes - take advantage of this in scripts
+  - can use git to go back in time and replay changes to filesystem
+  - can see if enrichment process has changed any files and needs to run again
+    - repeated `git add .` and `git status --porcelain` commands
+- workflow - windows
+  - screens `ctrl` + `win` + left or right
+    - hard to change this hotkey
+  - `win` v = clipboard manager - if i have to memorize any windows hotkeys, this would be it
+- awk and graph databases
+  - really good segment of awk book about implementing a database query language LINK LINK LINK LINK LINK LINK
+    - stuffed some awk commands together with pipes
+      - totally unsafe from an injection standpoint to concatenate strings and command arguments
+        - bash is designed to escape commands and strings and stuff, so it can deal with those issues separately
+  - i wouldn't want to use awk to search a graph database
+    - no local variables except function arguments
+      - not a problem for small programs, queries, or stream operatons (<100 lines of code)
+      - big problem for writing serious programs
+    - recursive algorithms do not do well in stream processors - unless you go the "quick and dirty" route and spawn processes
+      - let OS handle some of the work - subprocesses are fine in moderation
+        - like a good one that produces a long stream of data
+        - not a million tiny ones
+        - forking takes time, and it is obviously slower than function calls, but it's probably not problematic now that all processes on the machine are the same cached binary (check out docker, alpine, and busybox)
+  - however, awk would be relatively convenient for enumerating nodes
+  - and extremely convenient for processing any output text
+- unix join command (for relational data)
+- python for exploration algorithms
+- edit in 1 tab.
+- be careful not to "take work home with you"
+- what about not deleting things but archiving them in place and choosing not to copy them to the next implementation of knowledge systems in a few years `commit 3a4d69105ae71127885d08acfc9746ad21b665ef`
+- link pull requests to cards - dope idea from rwxrob
+  - can edit the card
+  - pull request link shows up cool in github
+  - the URL contains information about the id of the request even if the cards are moved elsewhere
+- do not have to worry about sorting idea cards, sort the cards' links that are most often used to improve traversal time
+  - grab tracking stats from somewhere
+- need format: like always use dashed lists like this
+  - thinking about format or trying to do sentences or clean up the card slows things down
+  - they grow
+    - elaboration, iterative edits
+  - they combine
+    - joining into sentences
+    - organizing into "paragraphs" or large groups
+  - they get orgainized / sorted
+  - items travel across links as projects are completed
+  - updated template to have dash lists to edit for speed
+- if the links and structure are all there, then you can take working notes directly on cards
+  - can find them on phone in a few seconds
+  - jot something down on web editor
+- able to manage a project
+  - put it all in a place
+  - link it to what needs to know about it
+  - i normally cannot even manage my email inbox - too much information
+  - project can manage itself?
+- little scripts in cards is okay, but treating it like a database modifying itself in git is annoying.
+  - should only run scripts that update things without user intervention in crons
+- it would work as a graph database in a really low overhead docker type of environment or embedded system.
+- it is easier to script something for a lot of nodes than to play with a graph UI visualizer
+- get to notes right away from terminal through known path of links, just like website
+- a new note and a connection can be the same as putting something on a todo list
+  - concept hub for todo lists - all todo lists there
+  - nodes for todo, WIP, done ~ issue tracking
+- it seems like it will be helpful to add links when browsing if you want to get somewhere instead of just searching and launching tabs
+  - if things are related by context, utility?
+- git is really useful for storing your changes before running automated scripts that may clobber content
+- issue tracking
+  - a list - cards attached to a specific card can be considered "in a list". for example, a list of cards that need something fixed
+  - cards in a chain - a workflow process can store an index or position
+  - the issues themselves can have "pointers" or "lists" of other cards to work on
+  - able to leave off and come back at any point
+  - work can progress in 5-30 minute intervals - does not feel like work and can switch to something else if it does
+- copying subset of some zet directories to another zettelkasten is the equivalent of copying a vertex induced subgraph
+  - links will match up with enrich process
+- tags are already like concept hubs, so it seems silly to make concept hubs and tags for things
+  - can already query them in that way
+  - the main difference is not being able to write notes on a tag, so if you want to write about it then use concepts instead?
+  - should use hubs for specific things or instances and tags for a general property - what it is
+  - i had not picked one yet so i've been doing both tags and hubs, and querying and using tags seems very reasonable, while concept hubs introduce tons of litter
+
+` zet/20221007043646/README.md `
+
+# Related
+
+- [20221021182334](/zet/20221021182334/README.md) project issue workflow
+- [20221012090359](/zet/20221012090359/README.md) first post from netbook
+- [20221009104752](/zet/20221009104752/README.md) stuff to research
+- [20221014073148](/zet/20221014073148/README.md) reasoning behind choices for tech stack - finding dependable and long lasting technology
+- [20221014072547](/zet/20221014072547/README.md) ideas need to be explained and connected to relevant things
+- [20221014070023](/zet/20221014070023/README.md) findings from implementing deep connectome search
+- [20221014023054](/zet/20221014023054/README.md) distinct workflow operations i do in this zettelkasten
+- [20221013180437](/zet/20221013180437/README.md) differences organizing zettelkasten in graph vs files in hierarchy
+- [20221008042814](/zet/20221008042814/README.md) WIP
+- [20221007192111](/zet/20221007192111/README.md) the first zettel generated from github
+- [20221012095659](/zet/20221012095659/README.md) working in github in the same branch on multiple devices
+- [20221012090938](/zet/20221012090938/README.md) my One Mix netbook
+- [20221012083444](/zet/20221012083444/README.md) building out structure, organization, and architecture quickly
+- [20221008183326](/zet/20221008183326/README.md) findings about video notes
+- [20221011193153](/zet/20221011193153/README.md) collection of zettelkasten tips from youtube
+- [20221010184202](/zet/20221010184202/README.md) screenshots of github ui graph showing workflow acceleration
+- [20221007043259](/zet/20221007043259/README.md) zettelkasten generic ideas
+- [20221009192000](/zet/20221009192000/README.md) stuff to put on main page
+- [20221008214406](/zet/20221008214406/README.md) sharing programming projects with zettelkasten
+- [20221008050923](/zet/20221008050923/README.md) tmux buffers as bash script pipe debug file buffer
+- [20221008052510](/zet/20221008052510/README.md) 80-20 rule
+- [20221006013612](/zet/20221006013612/README.md) markdown to zettelkasten conversion project
+- [20221007175034](/zet/20221007175034/README.md) optimizations for enrichment process
+- [20221003151267](/zet/20221003151267/README.md) fzf
+- [20221006084204](/zet/20221006084204/README.md) future enhancements to zet cmd
+- [20221006032933](/zet/20221006032933/README.md) problems / issues with zet cmd
+- [20221003151350](/zet/20221003151350/README.md) awk and bash scripting
+- [20221003151299](/zet/20221003151299/README.md) bash tricks
+- [20221003151424](/zet/20221003151424/README.md) bash scripts
+- [20221006032546](/zet/20221006032546/README.md) my original implementation of zet cmd
+- [20221006013313](/zet/20221006013313/README.md) zettelkasten
+- [20221026181955](/zet/20221026181955/README.md) keep track of tags attached to to-try lists
+- [20221010183037](/zet/20221010183037/README.md) importing zettelkasten data
+- [20221030082715](/zet/20221030082715/README.md) findings from converting markdown info to zet
+- [20221031192031](/zet/20221031192031/README.md) all cards required for implementation
+
+Tags:
+
+    #zettelkasten

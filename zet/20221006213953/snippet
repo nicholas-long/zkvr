@@ -1,0 +1,3 @@
+#!/bin/bash
+MYID=20221006213953
+./graphquery --human @videonotes or <( ./graphquery @video @notes ) not <(./graphquery id $MYID refs)
