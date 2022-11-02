@@ -16,7 +16,6 @@ ln -s zet/20221028172836/rundocker
 
 # Related
 
-- [20221012171100](/zet/20221012171100/README.md) recently created nodes hub
 - [20221013021614](/zet/20221013021614/README.md) terminal graph browser
 - [20221009095853](/zet/20221009095853/README.md) finished
 

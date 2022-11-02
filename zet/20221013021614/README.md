@@ -68,6 +68,7 @@ zet/20221013021614/getcopycontent zet/20221013021614/README.md
 - [20221009192000](/zet/20221009192000/README.md) stuff to put on main page
 - [20221025024238](/zet/20221025024238/README.md) enumerate tags
 - [20221101043303](/zet/20221101043303/README.md) important features and workflow tricks to mention on main page
+- [20221101163755](/zet/20221101163755/README.md) fix clone
 
 Tags:
 
