@@ -20,6 +20,7 @@ echo "zet/$dest/README.md" > $newcards
 
 echo "s/$templ/$dest/g" > $idmapping
 for srctmplid in $(zet/20221014025416/tagboundary $templ template);do
+  if [ "$srctmplid" == "$templ" ]; then continue; fi
   newid=$(./zc new | awk '/created zet ID/ { print $NF }') #TODO: fix this
   sleep 1.1
   echo "zet/$newid/README.md" >> $newcards
