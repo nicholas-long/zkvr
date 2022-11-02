@@ -7,3 +7,6 @@
 - [20221027011800](/zet/20221027011800/README.md) testing bash wrapper subcommand implementation
 - [20221028173620](/zet/20221028173620/README.md) yq binaries
 - [20221101043303](/zet/20221101043303/README.md) important features and workflow tricks to mention on main page
+- [20221102180120](/zet/20221102180120/README.md) get some screenshots
+- [20221102180133](/zet/20221102180133/README.md) record terminal video of usage
+- [20221102180329](/zet/20221102180329/README.md) mermaidjs automatic card
