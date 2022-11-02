@@ -14,6 +14,7 @@ things that are finished.
 - [20221026064448](/zet/20221026064448/README.md) check syntax of dash lists for tabstop 4
 - [20221008063052](/zet/20221008063052/README.md) autorunning scripts in cards
 - [20221014025416](/zet/20221014025416/README.md) clone a subsection of a graph by tag boundaries
+- [20221101163755](/zet/20221101163755/README.md) fix clone
 
 Tags:
 

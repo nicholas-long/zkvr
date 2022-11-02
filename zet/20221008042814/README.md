@@ -6,7 +6,6 @@ stuff i am working on.
 
 # Related
 
-- [20221101163755](/zet/20221101163755/README.md) fix clone
 - [20221013021614](/zet/20221013021614/README.md) terminal graph browser
 - [20221027011800](/zet/20221027011800/README.md) testing bash wrapper subcommand implementation
 - [20221023085822](/zet/20221023085822/README.md) implement returning paths or tables in graph query language
