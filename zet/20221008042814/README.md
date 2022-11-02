@@ -6,6 +6,7 @@ stuff i am working on.
 
 # Related
 
+- [20221101043303](/zet/20221101043303/README.md) important features and workflow tricks to mention on main page
 - [20221102180133](/zet/20221102180133/README.md) record terminal video of usage
 - [20221102180120](/zet/20221102180120/README.md) get some screenshots
 - [20221102180329](/zet/20221102180329/README.md) mermaidjs automatic card
@@ -23,7 +24,6 @@ stuff i am working on.
 - [20221024215216](/zet/20221024215216/README.md) future enhancements to graph query language
 - [20221014215609](/zet/20221014215609/README.md) finished, but with ongoing related work
 - [20221008061845](/zet/20221008061845/README.md) workflow
-- [20221101043303](/zet/20221101043303/README.md) important features and workflow tricks to mention on main page
 
 Tags:
 
