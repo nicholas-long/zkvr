@@ -3,6 +3,7 @@
 - cannot clone a single card
 - scripts in cards required for cloning implementation were missing
 - `zet/20221014025416/clonecardto`
+- fixed unrelated bug where cloning was duplicating the `#templatemain` card again
 
 ```
 ```
@@ -18,4 +19,4 @@
 
 Tags:
 
-    #bug
+    #bug #fixed
