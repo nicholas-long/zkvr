@@ -2,6 +2,8 @@
 
 Zettelkasten Note-Taking Terminal User Interface graph linker, editor, and cli query tool implemented with raw markdown links capable of graph queries and scripting automated reports 
 
+Created to organize my cybersecurity notes from the past year, which were stored in plain markdown files. https://github.com/nicholas-long/markdown-raw-files-to-zettelkasten-conversion
+
 - [zkvr terminal graph browser #tui #program documentation](/zet/20221013021614/README.md)
 
 # navigation links
