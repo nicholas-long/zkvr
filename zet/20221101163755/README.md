@@ -2,6 +2,7 @@
 
 - cannot clone a single card
 - scripts in cards required for cloning implementation were missing
+- `zet/20221014025416/clonecardto`
 
 ```
 ```
