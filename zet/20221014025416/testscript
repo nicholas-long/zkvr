@@ -1,0 +1,6 @@
+#!/bin/bash
+
+highlevel=20221011182140 # high level machine overview from notes template
+testid=20221031014520 # a test card ID
+zet/20221014025416/clonecardto $highlevel $testid
+

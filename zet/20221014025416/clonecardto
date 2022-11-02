@@ -1,0 +1,52 @@
+#!/bin/bash
+# arg 1: source template ID of a template.
+templ="$1"
+# arg 2: destination card ID. will be replaced.
+dest="$2"
+#
+# to clone a whole network of template cards:
+# source template should match #templatemain with optional #template cards attached which will get cloned
+
+idmapping=$(mktemp) # map template card IDs to new IDs
+newcards=$(mktemp) # map template card IDs to new IDs
+
+cp -r zet/$templ/* zet/$dest/
+
+# edit IDs in new doc
+#sed -i "s/$templ/$dest/g" "zet/$dest/README.md"
+./zc deltag -t templatemain $dest
+./zc deltag -t template $dest
+echo "zet/$dest/README.md" > $newcards
+
+echo "s/$templ/$dest/g" > $idmapping
+for srctmplid in $(zet/20221014025416/tagboundary $templ template);do
+  newid=$(./zc new | awk '/created zet ID/ { print $NF }') #TODO: fix this
+  sleep 1.1
+  echo "zet/$newid/README.md" >> $newcards
+  echo "s/$srctmplid/$newid/g" >> $idmapping
+  # edit card
+  cp -r zet/$srctmplid/* zet/$newid/
+  ./zc deltag -t templatemain $newid
+  ./zc deltag -t template $newid
+done
+
+echo sed -i -f $idmapping $(cat $newcards)
+sed -i -f $idmapping $(cat $newcards)
+
+#- procedure
+#  - get localgroup with new `tagboundary` script
+#  - make a new card for each of them and echo IDs to tempfile
+#  - replace `templatemain` -> current card ID
+#    - also call sed script for this
+#  - replace IDs in the new cards with sed
+
+echo "--------------------------------------------------------------------------------"
+echo "created"
+cat "$newcards"
+echo "--------------------------------------------------------------------------------"
+echo "mappings"
+cat "$idmapping"
+echo "--------------------------------------------------------------------------------"
+
+rm "$newcards"
+rm "$idmapping"

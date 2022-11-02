@@ -1,0 +1,23 @@
+#!/bin/bash
+
+id="$1"
+workset=$(mktemp)
+tagged=$(mktemp)
+temp=$(mktemp)
+joined=$(mktemp)
+echo $id > $workset
+lastsize=0
+size=1
+
+./graphquery "@$2" > $tagged
+
+while [[ $size != $lastsize ]]; do
+  lastsize=$size
+  ./graphquery $workset refs > $temp # get the refs to temp
+  join $tagged $temp > $joined # only include refs with tag
+  cat $workset $joined | sort -u > $temp # concatenate with working set using tempfile
+  cp $temp $workset
+  size=$(wc -l $workset | awk '{print $1}') # size of working set
+done
+cat $workset
+rm "$workset"
