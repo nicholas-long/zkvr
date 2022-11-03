@@ -9,13 +9,12 @@ name: zc
   - the full TUI implementation that will be released?
   - can launch new tmux windows if tmux is running
   - fzf selection window to select lots of references or spawn new nodes
-- installing
+- for scripting
+  - [20221013221136](/zet/20221013221136/README.md) graph query language
+- installing command shortcut to zc - useful for vim filters and as CLI
     - `echo "$(pwd)/zc \$@" > ~/.local/bin/z`
       - make sure `$HOME/.local/bin` is in your path
       - still trying to figure out this shortcut since it's not perfect
-- for scripting
-  - [20221013221136](/zet/20221013221136/README.md) graph query language
-- `./zc menu` TUI feature is obsolete workflow loop - all functionality is now implemented in zkvr graph browser
 
 - dependencies
   - vim or nvim
@@ -59,7 +58,6 @@ Options:
 
 - [20221013021614](/zet/20221013021614/README.md) terminal graph browser
 - [20221013221136](/zet/20221013221136/README.md) graph query language for zettelkasten
-- [20221008042814](/zet/20221008042814/README.md) WIP
 - [20221012144502](/zet/20221012144502/README.md) track modification dates
 - https://github.com/naps62/zk - another implementation in bash for reference
 - https://www.google.com/search?q=zettelkasten+fzf+vim ?
@@ -75,6 +73,8 @@ Options:
 - [20221008063052](/zet/20221008063052/README.md) autorunning scripts in cards
 - [20221014025416](/zet/20221014025416/README.md) clone a subsection of a graph by tag boundaries
 - [20221011145143](/zet/20221011145143/README.md) bat command pretty printer
+- [20221014215609](/zet/20221014215609/README.md) finished, but with ongoing related work
+- [20221103162623](/zet/20221103162623/README.md) move zetcmd to wrapper CLI
 
 Tags:
 

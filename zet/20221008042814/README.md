@@ -13,7 +13,6 @@ stuff i am working on.
 - [20221013021614](/zet/20221013021614/README.md) terminal graph browser
 - [20221027011800](/zet/20221027011800/README.md) testing bash wrapper subcommand implementation
 - [20221023085822](/zet/20221023085822/README.md) implement returning paths or tables in graph query language
-- [20221006032546](/zet/20221006032546/README.md) my original implementation of zet cmd
 - [20221006013313](/zet/20221006013313/README.md) zettelkasten
 - [20221006213953](/zet/20221006213953/README.md) video notes
 - [20221007043646](/zet/20221007043646/README.md) findings about implementing zettelkasten
