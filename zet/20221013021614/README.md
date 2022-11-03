@@ -70,6 +70,7 @@ zet/20221013021614/getcopycontent zet/20221013021614/README.md
 - [20221101043303](/zet/20221101043303/README.md) important features and workflow tricks to mention on main page
 - [20221101163755](/zet/20221101163755/README.md) fix clone
 - [20221014025416](/zet/20221014025416/README.md) clone a subsection of a graph by tag boundaries
+- [20221011145143](/zet/20221011145143/README.md) bat command pretty printer
 
 Tags:
 
