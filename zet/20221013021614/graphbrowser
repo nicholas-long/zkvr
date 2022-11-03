@@ -330,7 +330,7 @@ while [ 1 == "$going" ]; do
           cmd = "head -n 1 " readmepath
           cmd | getline header
           gsub(/^# /, "", header)
-          print dirpath, header
+          print dirpath " " header
           close(cmd)
         }
       ' | fzf -m | awk '
@@ -339,7 +339,11 @@ while [ 1 == "$going" ]; do
           count++
           cmd = cmd $1 " "
         }
-        END { cmd = cmd "zet/"
+        END {
+          cmd = cmd "zet/"
+          print cmd
+          system(cmd)
+        }
       '
       rm "$selection"
     fi
