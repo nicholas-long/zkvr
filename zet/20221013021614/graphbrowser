@@ -99,6 +99,7 @@ while [ 1 == "$going" ]; do
     print "enrich"
     print "stat"
     print "quit"
+    print "zkcopy"
     fflush()
   }
   #/[0-9]{13}/ { print "goto", $0 }
@@ -316,6 +317,32 @@ while [ 1 == "$going" ]; do
       /^zet\// { c = c " \047" $0 "\047" }
       END { system(c) }
       '
+  elif [ "$act" == "zkcopy" ]; then
+    otherzet=$(find / -readable -type d -name zet 2>/dev/null | fzf)
+    if [ ! -z "$otherzet" ]; then
+      selection=$(mktemp)
+      find "$otherzet" -type f -name README.md | awk '
+        BEGIN { FS = OFS = "/" }
+        {
+          readmepath = $0
+          NF--
+          dirpath = $0
+          cmd = "head -n 1 " readmepath
+          cmd | getline header
+          gsub(/^# /, "", header)
+          print dirpath, header
+          close(cmd)
+        }
+      ' | fzf -m | awk '
+        BEGIN { cmd = "cp -r " }
+        {
+          count++
+          cmd = cmd $1 " "
+        }
+        END { cmd = cmd "zet/"
+      '
+      rm "$selection"
+    fi
   elif [ "$act" == "enrich" ]; then
     echo ''
     echo ' ╭────────────────────────────────┬───╮'
