@@ -15,6 +15,7 @@
 - [20221007044552](/zet/20221007044552/README.md) todo or to-try list
 - [20221013021614](/zet/20221013021614/README.md) terminal graph browser
 - [20221009192000](/zet/20221009192000/README.md) stuff to put on main page
+- [20221006032546](/zet/20221006032546/README.md) my original implementation of zet cmd
 
 Tags:
 

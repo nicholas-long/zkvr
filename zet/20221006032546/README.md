@@ -74,7 +74,7 @@ Options:
 - [20221014025416](/zet/20221014025416/README.md) clone a subsection of a graph by tag boundaries
 - [20221011145143](/zet/20221011145143/README.md) bat command pretty printer
 - [20221014215609](/zet/20221014215609/README.md) finished, but with ongoing related work
-- [20221103162623](/zet/20221103162623/README.md) move zetcmd to wrapper CLI
+- [20221103162623](/zet/20221103162623/README.md) move zetcmd to wrapper CLI and remove fzf subcommands from CLI
 
 Tags:
 
