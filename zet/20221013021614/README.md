@@ -32,6 +32,7 @@
   - `enrich`      - insert backlinks and other various cleanup scripts. runs automatic scripts in cards
     - consider the security implications of automatic scripts
   - `quit`        - exit program. i like q as a hotkey so this is good in fzf.
+  - `zkcopy`      - copy cards from other zettelkasten (experimental)
 
 ```
 ln -s zet/20221013021614/ browser
