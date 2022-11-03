@@ -15,6 +15,7 @@ things that are finished.
 - [20221008063052](/zet/20221008063052/README.md) autorunning scripts in cards
 - [20221014025416](/zet/20221014025416/README.md) clone a subsection of a graph by tag boundaries
 - [20221101163755](/zet/20221101163755/README.md) fix clone
+- [20221022000131](/zet/20221022000131/README.md) put tmux and vim rc config in dockerfile
 
 Tags:
 

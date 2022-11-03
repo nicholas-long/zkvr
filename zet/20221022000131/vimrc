@@ -1,0 +1,19 @@
+" Nicholas Long
+" not doing a very complicated config yet. stick to basics. add a few features
+" that are practical.
+set expandtab
+set tabstop=2
+set shiftwidth=2
+set number
+set relativenumber
+set noerrorbells
+set nocompatible              " be iMproved, required
+filetype off                  " required
+"set list listchars=tab:▸\ ,eol:¬,trail:·
+"set list
+"set nowrap
+
+" jk to exit insert mode quickly if you don't have easy Esc
+imap jk <Esc>
+" tab to open a markdown link
+nmap <Tab> /zet<CR>"zyt):e <C-r>z<CR>

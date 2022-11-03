@@ -11,6 +11,8 @@ export GRAPH_PROG="$0"
 # run me as symlink from my directory or in somewhere with a zet/
 [ -d zet ] || cd $SCRIPT_DIR && export prog="$SCRIPT_DIR/zc" && export GRAPH_PROG="$SCRIPT_DIR/zkvr"
 
+zkname=$(basename $(pwd))
+
 if [ -z "$EDITOR" ]; then
   EDITOR=$(which nvim 2>/dev/null || which vim 2>/dev/null || which vi 2>/dev/null )
 fi
@@ -109,7 +111,7 @@ while [ 1 == "$going" ]; do
     --bind "pgup:preview-up,pgdn:preview-down" \
     "--preview-window=up,75%" \
     "--history=fzftracking/$id" \
-    --prompt="$doc :" > "$selection"
+    --prompt="$zkname $doc :" > "$selection"
   sel="$(cat $selection)"
   act=$(cat $selection | awk '{print $1}')
   id=$(echo "$doc" | awk -F / '{ print $(NF-1) }')
