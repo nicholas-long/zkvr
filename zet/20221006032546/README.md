@@ -74,6 +74,7 @@ Options:
 - [20221007193324](/zet/20221007193324/README.md) github actions
 - [20221008063052](/zet/20221008063052/README.md) autorunning scripts in cards
 - [20221014025416](/zet/20221014025416/README.md) clone a subsection of a graph by tag boundaries
+- [20221011145143](/zet/20221011145143/README.md) bat command pretty printer
 
 Tags:
 
