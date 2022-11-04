@@ -1,10 +1,14 @@
-# testing bash wrapper subcommand implementation
+# bash wrapper subcommand implementation
 
 - concept of `testing bash wrapper subcommand implementation`
 - copied some concepts from zet cmd
 
 ```
 ln -s zet/20221027011800/zetwrap zetcli
+
+./zc new
+./zetcli id
+
 ```
 
 ` zet/20221027011800/README.md `

@@ -1,0 +1,7 @@
+#!/bin/bash
+
+id=$(date -u +%Y%m%d%H%M%S)
+while [ -d "zet/$id" ]; do
+  let "id=id+1"
+done
+echo "$id"
