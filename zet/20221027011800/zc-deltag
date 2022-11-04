@@ -1,1 +1,40 @@
 #!/bin/bash
+# remove tags from documents or files.
+
+# parse args with case statement
+verbose=0
+tag=""
+while [[ $# -gt 0 ]]; do
+  case $1 in
+    -q|--query) #TODO: support queries to delete tags? can already do queries in a card
+      shift # pop arg
+      query="$1"
+      ;;
+    -t|--tag) # REQUIRED
+      shift # pop arg
+      tag="$1"
+      ;;
+    -v|--verbose) #TODO - for now always print to stderr
+      verbose=1
+      ;;
+    -h|--help)
+      "$ZET_PROG" helptext "$0"
+      exit 1
+      ;;
+    *) # one or more arguments consisting of zettel IDs or filenames
+      doc="$1"
+      if [[ "$doc" =~ ^[0-9]+$ ]]; then
+        doc="zet/$doc/README.md"
+      fi
+      if [ -z "$tag" ]; then
+        echo "tag option (-t) is required before IDs or files" > /dev/stderr
+        exit 1
+      fi
+      echo "removing tag $tag from $doc" > /dev/stderr
+      # remove tags and cleanup spaces from end and ensure 4 at beginning
+      sed -i -e '$s/#'$tag'//' -e '$s/ *$//' -e '$s/  */ /g' -e '$s/^ */    /' "$doc"
+      ;;
+  esac
+  shift
+done
+

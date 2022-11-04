@@ -3,8 +3,6 @@
 - concept of `testing bash wrapper subcommand implementation`
 - copied some concepts from zet cmd
 - remaining subcommands to re-implement
-  - `deltag`
-  - `addtag`
   - `refs`
   - `preview`
   - `unlink`
