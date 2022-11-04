@@ -14,11 +14,11 @@ while [[ $# -gt 0 ]]; do
       shift
       filearg="$1"
       ;;
-    -t|--title)
+    -t|--title) # the title of the new zet to create
       shift # pop arg
       title="$1"
       ;;
-    -r|--reference)
+    -r|--reference) # shortcut option to add a reference in the new card by ID
       shift # pop arg
       reference="$1"
       ;;
@@ -26,7 +26,7 @@ while [[ $# -gt 0 ]]; do
       VERBOSE=1
       ;;
     -h|--help)
-      cat "$0" | grep '^\s\+-.|--.*' | sed 's/)$//'
+      "$ZET_PROG" helptext "$0"
       exit 1
       ;;
     *)
