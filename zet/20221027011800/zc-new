@@ -1,0 +1,55 @@
+#!/bin/bash
+
+makeedit=0
+title=""
+reference=""
+filearg=""
+
+while [[ $# -gt 0 ]]; do
+  case $1 in
+    -e|--edit)
+      makeedit=1
+      ;;
+    -f|--file) #TODO: create zet imported from file and attach file?
+      shift
+      filearg="$1"
+      ;;
+    -t|--title)
+      shift # pop arg
+      title="$1"
+      ;;
+    -r|--reference)
+      shift # pop arg
+      reference="$1"
+      ;;
+    -v|--verbose)
+      VERBOSE=1
+      ;;
+    -h|--help)
+      cat "$0" | grep '^\s\+-.|--.*' | sed 's/)$//'
+      exit 1
+      ;;
+    *)
+      break
+  esac
+  shift
+done
+
+id=$("$ZET_PROG" id)
+mkdir -p zet/$id
+filepath="zet/$id/README.md"
+
+cp zettel-template "$filepath"
+if [ ! -z "$title" ]; then
+  sed -i "s|{{title}}|$title|" "$filepath"
+fi
+if [ ! -z "$reference" ]; then
+  #$ZET_PROG addref -t "$id" "$reference"
+  echo "TODO: add ref here" > /dev/stderr
+fi
+sed -i "s|00000000000000|$id|" "$filepath"
+if [ 0 != "$makeedit" ]; then
+  $EDITOR "$filepath"
+fi
+
+echo "$id"
