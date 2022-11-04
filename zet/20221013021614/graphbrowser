@@ -303,7 +303,7 @@ while [ 1 == "$going" ]; do
         fflush()
       }
       END {
-        cmd = "find zet/" ENVIRON["id"] " -type f | grep -v README.md"
+        cmd = "find zet/" ENVIRON["id"] " -type f,l | grep -v README.md"
         while ((cmd | getline) > 0) {
           if ($0 !~ /^$/) print $0
         }
