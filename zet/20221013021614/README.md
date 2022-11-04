@@ -1,4 +1,4 @@
-# terminal graph browser
+# zkvr terminal graph browser
 
 - concept of `terminal graph browser`
 - zkvr

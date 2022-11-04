@@ -56,7 +56,7 @@ Options:
 
 # Related
 
-- [20221013021614](/zet/20221013021614/README.md) terminal graph browser
+- [20221013021614](/zet/20221013021614/README.md) zkvr terminal graph browser
 - [20221013221136](/zet/20221013221136/README.md) graph query language for zettelkasten
 - [20221012144502](/zet/20221012144502/README.md) track modification dates
 - https://github.com/naps62/zk - another implementation in bash for reference
