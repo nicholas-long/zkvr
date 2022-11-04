@@ -59,7 +59,11 @@ if [[ "$action" == "help" || "$action" == "--help" ]]; then
 fi
 
 actionexec="$implementation/zc-$action"
-if [ -f "$actionexec" ]; then
+if [ "$1" == "--help" ]; then
+  "$implementation/zc-helptext" "$actionexec"
+elif [ "$1" == "-h" ]; then
+  "$implementation/zc-helptext" "$actionexec"
+elif [ -f "$actionexec" ]; then
   "$actionexec" "$@" # wrap arguments in quotes
 else
   echo "ERROR: unknown action $action" > /dev/stderr
