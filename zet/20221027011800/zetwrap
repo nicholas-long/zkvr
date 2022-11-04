@@ -35,8 +35,10 @@ if [ ! -d zet ]; then
   exit 1
 fi
 
-export ZET_DIR="$(pwd)"
-echo "current zettelkasten: $ZET_DIR" > /dev/stderr
+if [ -z "$ZET_DIR" ]; then # don't print this message in subprocesses
+  export ZET_DIR="$(pwd)"
+  echo "current zettelkasten: $ZET_DIR" > /dev/stderr
+fi
 implementation="$ZET_DIR/zet/$ZET_IMPL_ID" # this card's scripts
 
 action=$1
