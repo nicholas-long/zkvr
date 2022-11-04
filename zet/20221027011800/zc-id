@@ -1,5 +1,10 @@
 #!/bin/bash
 
+if [ "$1" == "--help" ]; then
+  echo "generate a unique zettel ID. advances the timestamp until a unique ID is found"
+  exit 0
+fi
+
 id=$(date -u +%Y%m%d%H%M%S)
 while [ -d "zet/$id" ]; do
   let "id=id+1"
