@@ -1,0 +1,12 @@
+#!/usr/bin/awk -f
+# get filenames of README files from input list of zet IDs. pipe in lines of text or pass IDs as arguments.
+
+BEGIN {
+  if (ARGC > 1) {
+    for (n=1;n<ARGC;n++) {
+      print "zet/" ARGV[n] "/README.md"
+    }
+    exit 0
+  }
+}
+/^[0-9]+$/ { print "zet/" $0 "/README.md" }

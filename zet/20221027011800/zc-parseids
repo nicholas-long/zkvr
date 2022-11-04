@@ -1,0 +1,4 @@
+#!/bin/bash
+# parse zettel IDs out of text.
+
+grep -Eo '[0-9]{14}' "$@" | sort -u
