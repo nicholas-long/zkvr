@@ -2,6 +2,20 @@
 
 - concept of `testing bash wrapper subcommand implementation`
 - copied some concepts from zet cmd
+- remaining subcommands to re-implement
+  - `spawn`
+  - `deltag`
+  - `addtag`
+  - `refs`
+  - `menu`
+  - `connectome`
+  - `preview`
+  - `unlink`
+  - `rm`
+  - `addref`
+  - `enrich_links_single`
+  - `fixspaces`
+  - `enrich`
 
 ```
 ln -s zet/20221027011800/zetwrap zetcli
