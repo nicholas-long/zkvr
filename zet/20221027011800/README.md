@@ -1,9 +1,8 @@
-# bash wrapper subcommand implementation
+# zetcli bash wrapper subcommand implementation
 
 - concept of `testing bash wrapper subcommand implementation`
-- copied some concepts from zet cmd
+- copying some concepts from zet cmd
 - remaining subcommands to re-implement
-  - `refs`
   - `preview`
   - `unlink`
   - `rm`

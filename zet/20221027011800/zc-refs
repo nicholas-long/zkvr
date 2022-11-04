@@ -1,1 +1,57 @@
 #!/bin/bash
+# return references contained in `# Related` section for a zettel ID or filename.
+
+# parse args with case statement
+verbose=0
+oneway=0
+while [[ $# -gt 0 ]]; do
+  case $1 in
+    -v|--verbose) #TODO ?
+      verbose=1
+      ;;
+    -h|--help)
+      "$ZET_PROG" helptext "$0"
+      exit 1
+      ;;
+    -a|--all) # print all references, including IDs mentioned in content
+      oneway=1
+      ;;
+    *) # one or more arguments consisting of zettel IDs or filenames
+      break
+      ;;
+  esac
+  shift
+done
+
+if [ "$oneway" == 0 ]; then
+  awk '
+    BEGIN {
+      for (n = 1; n < ARGC; n++) {
+        if (ARGV[n] ~ /^[0-9]+$/) {
+          ARGV[n] = "zet/" ARGV[n] "/README.md"
+        }
+      }
+    }
+    BEGINFILE { refs = 0 }
+    #refs && /^ *$/ { nextfile }
+    refs && /^- [0-9]+ *$/ { print $2 } # print un-enriched IDs in list
+    refs && /^- \[[0-9]+\]/ {
+      gsub(/^- +/,"")
+      gsub(/^\[/,"")
+      gsub(/\].*/,"")
+      print
+    }
+    /^# [Rr]elated/ { refs = 1 }
+  ' "$@" | sort -u
+else
+  awk '
+    BEGIN {
+      for (n = 1; n < ARGC; n++) {
+        if (ARGV[n] ~ /^[0-9]+$/) {
+          ARGV[n] = "zet/" ARGV[n] "/README.md"
+        }
+        print ARGV[n]
+      }
+    }
+  ' "$@" | xargs grep -Eo '[0-9]{14}' | sort -u
+fi
