@@ -44,14 +44,5 @@ if [ "$oneway" == 0 ]; then
     /^# [Rr]elated/ { refs = 1 }
   ' "$@" | sort -u
 else
-  awk '
-    BEGIN {
-      for (n = 1; n < ARGC; n++) {
-        if (ARGV[n] ~ /^[0-9]+$/) {
-          ARGV[n] = "zet/" ARGV[n] "/README.md"
-        }
-        print ARGV[n]
-      }
-    }
-  ' "$@" | xargs grep -Eo '[0-9]{14}' | sort -u
+  ./zetcli readmefile "$@" | xargs grep -Eo '[0-9]{14}' | sort -u
 fi
