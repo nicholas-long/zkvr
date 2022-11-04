@@ -1,6 +1,11 @@
 #!/bin/bash
 
+if [ "$1" == "--summary" ]; then
+  summary=1
+  shift
+fi
 file="$1"
-basename "$file"
-awk 'NR > 1 && /^# / { gsub(/^# /,""); print; exit }' "$1"
+#basename "$file"
+awk -v "OFS=\t" 'NR > 1 && /^# / { gsub(/^# /,""); "basename " ARGV[1] | getline filename; printf("%20s    %s\n", filename, $0); exit }' "$1"
+[ "$summary" == 1 ] && exit 0
 cat "$1" | grep '^\s\+-.|--.*' | sed 's/)$//'

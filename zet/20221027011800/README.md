@@ -10,6 +10,7 @@
   - `enrich_links_single`
   - `fixspaces`
   - `enrich`
+- rename zetwrap to `zetcli` and update symlink
 
 ```
 ln -s zet/20221027011800/zetwrap zetcli

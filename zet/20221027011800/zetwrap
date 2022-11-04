@@ -54,8 +54,10 @@ if [[ "$action" == "help" || "$action" == "--help" ]]; then
   if [ -z "$prettyname" ]; then
     export prettyname=$(awk 'BEGIN { split(ENVIRON["ZET_PROG"],arr,"/"); print arr[length(arr)] }')
   fi
+  echo "$prettyname"
   echo "full list of actions:"
-  ls $implementation/zc-* | awk -F / '{ gsub(/^zc-/,"",$NF); print $NF }'
+  #ls $implementation/zc-* | awk -F / '{ gsub(/^zc-/,"",$NF); print $NF }'
+  find $implementation -name 'zc-*' | xargs -n 1 "$0" helptext --summary
   echo "for help on any action, run $prettyname <action> --help"
   exit 0
 fi
