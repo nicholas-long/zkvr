@@ -1,4 +1,4 @@
 - [20221006032546](/zet/20221006032546/README.md) my original implementation of zet cmd
 - [20221013021614](/zet/20221013021614/README.md) zkvr terminal graph browser
-- [20221027011800](/zet/20221027011800/README.md) bash wrapper subcommand implementation
+- [20221027011800](/zet/20221027011800/README.md) zetcli bash wrapper subcommand implementation
 - [20221028173620](/zet/20221028173620/README.md) yq binaries

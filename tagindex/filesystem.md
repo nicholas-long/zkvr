@@ -1,1 +1,1 @@
-- [20221027011800](/zet/20221027011800/README.md) bash wrapper subcommand implementation
+- [20221027011800](/zet/20221027011800/README.md) zetcli bash wrapper subcommand implementation

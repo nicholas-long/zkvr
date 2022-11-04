@@ -61,7 +61,7 @@ Options:
 - [20221012144502](/zet/20221012144502/README.md) track modification dates
 - https://github.com/naps62/zk - another implementation in bash for reference
 - https://www.google.com/search?q=zettelkasten+fzf+vim ?
-- [20221027011800](/zet/20221027011800/README.md) bash wrapper subcommand implementation
+- [20221027011800](/zet/20221027011800/README.md) zetcli bash wrapper subcommand implementation
 - [20221028173620](/zet/20221028173620/README.md) yq binaries
 - [20221006084204](/zet/20221006084204/README.md) future enhancements to zet cmd
 - [20221009192000](/zet/20221009192000/README.md) stuff to put on main page

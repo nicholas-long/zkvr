@@ -11,7 +11,7 @@ stuff i am working on.
 - [20221102180120](/zet/20221102180120/README.md) get some screenshots
 - [20221102180329](/zet/20221102180329/README.md) mermaidjs automatic card
 - [20221013021614](/zet/20221013021614/README.md) zkvr terminal graph browser
-- [20221027011800](/zet/20221027011800/README.md) bash wrapper subcommand implementation
+- [20221027011800](/zet/20221027011800/README.md) zetcli bash wrapper subcommand implementation
 - [20221023085822](/zet/20221023085822/README.md) implement returning paths or tables in graph query language
 - [20221006013313](/zet/20221006013313/README.md) zettelkasten
 - [20221006213953](/zet/20221006213953/README.md) video notes
