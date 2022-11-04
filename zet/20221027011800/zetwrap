@@ -37,7 +37,7 @@ fi
 
 export ZET_DIR="$(pwd)"
 echo "current zettelkasten: $ZET_DIR" > /dev/stderr
-implementation="$ZET_DIR/zet/$ZET_IMPL_ID"
+implementation="$ZET_DIR/zet/$ZET_IMPL_ID" # this card's scripts
 
 action=$1
 shift
@@ -60,7 +60,7 @@ fi
 
 actionexec="$implementation/zc-$action"
 if [ -f "$actionexec" ]; then
-  "$actionexec" $@
+  "$actionexec" "$@" # wrap arguments in quotes
 else
   echo "ERROR: unknown action $action" > /dev/stderr
   "$ZET_PROG" --help 2>/dev/null
