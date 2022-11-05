@@ -76,6 +76,7 @@ zet/20221013021614/getcopycontent zet/20221013021614/README.md
 - [20221011145143](/zet/20221011145143/README.md) bat command pretty printer
 - [20221105021715](/zet/20221105021715/README.md) git diff picker feature
 - [20221027011800](/zet/20221027011800/README.md) zetcli bash wrapper subcommand implementation
+- [20221105224810](/zet/20221105224810/README.md) launch browser to current card on github
 
 Tags:
 

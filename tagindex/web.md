@@ -1,2 +1,1 @@
-- [20221007193324](/zet/20221007193324/README.md) github actions
 - [20221105224810](/zet/20221105224810/README.md) launch browser to current card on github
