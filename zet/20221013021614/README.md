@@ -27,6 +27,7 @@
   - `link`        - insert many links with fzf fuzzy finder
   - `unlink`      - select one link to remove. will remove from target zettel card as well.
   - `stat`        - git status preview, colorized. launches lazygit if selected.
+  - `gitlog`      - view git log history of current card and attachments, with paging
   - `back`        - go back, like a browser
     - if you edit links in cards you are working on, you could get trapped and need to hop back to previous card
   - `enrich`      - insert backlinks and other various cleanup scripts. runs automatic scripts in cards
