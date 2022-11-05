@@ -2,4 +2,5 @@
 - [20221006032546](/zet/20221006032546/README.md) my original implementation of zet cmd
 - [20221007043646](/zet/20221007043646/README.md) findings about implementing zettelkasten
 - [20221008063052](/zet/20221008063052/README.md) autorunning scripts in cards
+- [20221013021614](/zet/20221013021614/README.md) zkvr terminal graph browser
 - [20221024215216](/zet/20221024215216/README.md) future enhancements to graph query language
