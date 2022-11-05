@@ -28,6 +28,7 @@ ln -s zet/20221027011800/zetwrap zetcli
 - [20221008042814](/zet/20221008042814/README.md) WIP
 - [20221103162623](/zet/20221103162623/README.md) move zetcmd to wrapper CLI and remove fzf subcommands from CLI
 - [20221013021614](/zet/20221013021614/README.md) zkvr terminal graph browser
+- [20221105220915](/zet/20221105220915/README.md) add recurring timers using github cron actions
 
 Tags:
 
