@@ -1,0 +1,28 @@
+#!/bin/bash
+# insert a line at the head of a zettel's content
+
+line=""
+while [[ $# -gt 0 ]]; do
+  case $1 in
+    -l|--line) # the title of the new zet to create
+      shift # pop arg
+      line="$1"
+      ;;
+    -v|--verbose)
+      VERBOSE=1
+      ;;
+    -h|--help)
+      "$ZET_PROG" helptext "$0"
+      exit 1
+      ;;
+    *)
+      fn="$1"
+      # convert IDs
+      if [[ fn =~ ^[0-9]+$ ]]; then
+        fn="zet/$fn/README.md"
+      fi
+      break
+  esac
+  shift
+done
+
