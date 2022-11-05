@@ -91,6 +91,7 @@ while [ 1 == "$going" ]; do
         print "nuketag"
         print "clone"
         print "gitlog"
+        print "diff"
       }
     } else {
       id = 0
@@ -350,6 +351,8 @@ while [ 1 == "$going" ]; do
       '
       rm "$selection"
     fi
+  elif [ "$act" == "diff" ]; then
+    echo "TODO"
   elif [ "$act" == "enrich" ]; then
     echo ''
     echo ' ╭────────────────────────────────┬───╮'

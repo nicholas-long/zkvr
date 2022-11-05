@@ -17,6 +17,7 @@ zet/20221012171100/README.md
 - [20221102180133](/zet/20221102180133/README.md) record terminal video of usage
 - [20221102180329](/zet/20221102180329/README.md) mermaidjs automatic card
 - [20221103162623](/zet/20221103162623/README.md) move zetcmd to wrapper CLI and remove fzf subcommands from CLI
+- [20221105021715](/zet/20221105021715/README.md) git diff picker feature
 
 Tags:
 

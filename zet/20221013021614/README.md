@@ -28,6 +28,7 @@
   - `unlink`      - select one link to remove. will remove from target zettel card as well.
   - `stat`        - git status preview, colorized. launches lazygit if selected.
   - `gitlog`      - view git log history of current card and attachments, with paging
+  - `diff`        - git diff interactive commit selector
   - `back`        - go back, like a browser
     - if you edit links in cards you are working on, you could get trapped and need to hop back to previous card
   - `enrich`      - insert backlinks and other various cleanup scripts. runs automatic scripts in cards
@@ -73,6 +74,7 @@ zet/20221013021614/getcopycontent zet/20221013021614/README.md
 - [20221101163755](/zet/20221101163755/README.md) fix clone
 - [20221014025416](/zet/20221014025416/README.md) clone a subsection of a graph by tag boundaries
 - [20221011145143](/zet/20221011145143/README.md) bat command pretty printer
+- [20221105021715](/zet/20221105021715/README.md) git diff picker feature
 - [20221027011800](/zet/20221027011800/README.md) zetcli bash wrapper subcommand implementation
 
 Tags:
