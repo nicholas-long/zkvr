@@ -73,6 +73,7 @@ zet/20221013021614/getcopycontent zet/20221013021614/README.md
 - [20221101163755](/zet/20221101163755/README.md) fix clone
 - [20221014025416](/zet/20221014025416/README.md) clone a subsection of a graph by tag boundaries
 - [20221011145143](/zet/20221011145143/README.md) bat command pretty printer
+- [20221027011800](/zet/20221027011800/README.md) zetcli bash wrapper subcommand implementation
 
 Tags:
 
