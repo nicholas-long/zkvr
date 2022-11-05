@@ -1,6 +1,6 @@
 # add recurring timers using github cron actions
 
-- example github action crons in seclists - did i include in conversion project?
+- example github action crons in seclists
 
 ```yaml
 name: update etc files

@@ -13,6 +13,9 @@
   - 5 = Friday
   - 6 = Saturday
 
+- examples
+  - `30 20 1,15 * *` - run at 8:30p on 1st and 15th of the month
+
 ```
 ```
 
