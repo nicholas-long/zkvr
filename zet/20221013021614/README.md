@@ -79,4 +79,4 @@ zet/20221013021614/getcopycontent zet/20221013021614/README.md
 
 Tags:
 
-    #feature #tui #program
+    #tui #program #zettelkasten

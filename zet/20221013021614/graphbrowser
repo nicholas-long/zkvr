@@ -352,7 +352,19 @@ while [ 1 == "$going" ]; do
       rm "$selection"
     fi
   elif [ "$act" == "diff" ]; then
-    echo "TODO"
+    choice=$(git log -- zet/$id | awk '
+    $1 == "Date:" { gsub(/Date: */,""); date = $0 }
+    $1 == "commit" { c = $2 }
+    /^    / {
+      msg = $0
+      gsub(/^ */,"",msg)
+      gsub(/ *$/,"",msg)
+      print c, date, msg
+    }
+    ' | fzf)
+    if [ ! -z "$choice" ]; then
+      git diff $(echo "$choice" | awk '{print $1}') -- "zet/$id" | (bat --paging=always || less)
+    fi
   elif [ "$act" == "enrich" ]; then
     echo ''
     echo ' ╭────────────────────────────────┬───╮'
