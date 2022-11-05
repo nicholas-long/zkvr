@@ -74,7 +74,7 @@ while [ 1 == "$going" ]; do
       gsub(/\/.*$/,"",id)
       if (id != "README.md") {
         lsdir = "ls zet/" id
-        cmd = lsdir " | grep -v \047README\.md\047"
+        cmd = lsdir " | grep -v \047README\\.md\047"
         while ((cmd | getline) > 0) {
           print "edit", "zet/" id "/" $0
         }
