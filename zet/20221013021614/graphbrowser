@@ -27,6 +27,9 @@ fi
 if [ "$1" == "video" ]; then
   if [ "$3" == "stat" ]; then
     zet/$IMPL/previewgit
+  elif [[ "$3" =~ ^edit ]]; then
+    editdoc=$(echo "$3" | awk '{print $2}')
+    bat --style=plain --color=always "$editdoc"
   elif [ "$2" == "preview" ]; then
     selid=$(echo "$3" | implementation/parseids)
     bat --language md --style=plain --color=always zet/$selid/README.md
