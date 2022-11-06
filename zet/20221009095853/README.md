@@ -17,6 +17,7 @@ things that are finished.
 - [20221101163755](/zet/20221101163755/README.md) fix clone
 - [20221022000131](/zet/20221022000131/README.md) put tmux and vim rc config in dockerfile
 - [20221105021715](/zet/20221105021715/README.md) git diff picker feature
+- [20221105220915](/zet/20221105220915/README.md) add recurring timers using github cron actions
 
 Tags:
 
