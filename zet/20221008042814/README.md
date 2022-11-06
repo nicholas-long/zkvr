@@ -6,7 +6,6 @@ stuff i am working on.
 
 # Related
 
-- [20221105220915](/zet/20221105220915/README.md) add recurring timers using github cron actions
 - [20221101043303](/zet/20221101043303/README.md) important features and workflow tricks to mention on main page
 - [20221102180133](/zet/20221102180133/README.md) record terminal video of usage
 - [20221102180120](/zet/20221102180120/README.md) get some screenshots
