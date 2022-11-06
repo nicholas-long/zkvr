@@ -1,0 +1,18 @@
+# TODO: Your to-do list
+
+- learn
+
+```
+```
+
+` zet/20221101052020/README.md `
+
+# Related
+
+- [20221008042814](/zet/20221008042814/README.md) WIP
+- [20221009192000](/zet/20221009192000/README.md) stuff to put on main page
+- [20221003150098](/zet/20221003150098/README.md) TODO
+
+Tags:
+
+    #todo #list #me #hub
