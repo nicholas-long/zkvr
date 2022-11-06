@@ -1,14 +1,19 @@
 #!/bin/bash
 # insert a line at the head of a zettel's content
 
+VERBOSE=0
 line=""
+bul=""
 while [[ $# -gt 0 ]]; do
   case $1 in
-    -l|--line) # the title of the new zet to create
+    -l|--line) # the line to insert - quoted string for words
       shift # pop arg
       line="$1"
       ;;
-    -v|--verbose)
+    -b|--bullet-point) # the line to insert - quoted string for words
+      bul="- "
+      ;;
+    -v|--verbose) # not implemented
       VERBOSE=1
       ;;
     -h|--help)
@@ -16,12 +21,31 @@ while [[ $# -gt 0 ]]; do
       exit 1
       ;;
     *)
+      tf=$(mktemp)
       fn="$1"
       # convert IDs
-      if [[ fn =~ ^[0-9]+$ ]]; then
+      if [[ "$fn" =~ ^[0-9]+$ ]]; then
         fn="zet/$fn/README.md"
       fi
-      break
+      echo "inserting line '$bul$line' into $fn" > /dev/stderr
+      awk -v "line=$bul$line" '
+        FNR == 1 && /^# / {
+          added = 0
+          print
+          print ""
+          getline
+          if (/^ *$/) {
+            getline
+          }
+        }
+        !added && !/^ *$/ {
+          print line
+          added = 1
+        }
+        { print }
+      ' "$fn" > $tf
+      mv "$tf" "$fn"
+      ;;
   esac
   shift
 done

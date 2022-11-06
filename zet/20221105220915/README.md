@@ -1,6 +1,6 @@
 # add recurring timers using github cron actions
 
-- need a new subcommand to insert content
+- new subcommand to insert content `zet/20221027011800/zc-insertcontent`
 - example github action crons in seclists
 
 ```yaml
