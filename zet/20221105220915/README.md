@@ -1,6 +1,7 @@
 # add recurring timers using github cron actions
 
 - new subcommand to insert content `zet/20221027011800/zc-insertcontent`
+- `./zetcli insertcontent -b -l "do laundry $(date)" 20221027011800`
 - example github action crons in seclists
 
 ```yaml
