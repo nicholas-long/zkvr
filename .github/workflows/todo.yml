@@ -3,7 +3,7 @@ name: TODO cron
 # Controls when the workflow will run
 on:
   schedule:
-    - cron: '5 * * * *' # run at 8:30p on Fridays # TESTING 5 minutes
+    - cron: '10 * * * *' # run at 8:30p on Fridays # TESTING
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
