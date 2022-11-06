@@ -17,7 +17,7 @@ jobs:
       - uses: actions/checkout@v3
 
       # Runs a single command using the runners shell
-      - name: update wordlist
+      - name: update todo list
         run: ./zetcli insertcontent -b -l "do laundry - $(date --iso)" 20221101052020 # your todo list
 
       - name: print diff
