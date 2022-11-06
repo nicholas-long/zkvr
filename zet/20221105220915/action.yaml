@@ -18,7 +18,7 @@ jobs:
 
       # Runs a single command using the runners shell
       - name: update wordlist
-        run: ./zetcli insertcontent -b -l "do laundry - $(date --iso)" 20221101052020
+        run: ./zetcli insertcontent -b -l "do laundry - $(date --iso)" 20221101052020 # your todo list
 
       - name: print diff
         run: git diff
