@@ -43,6 +43,7 @@ jobs:
 - [20221105222236](/zet/20221105222236/README.md) cron syntax
 - [20221012171100](/zet/20221012171100/README.md) recently created nodes hub
 - [20221027011800](/zet/20221027011800/README.md) zetcli bash wrapper subcommand implementation
+- [20221101052020](/zet/20221101052020/README.md) TODO: Your to-do list
 
 Tags:
 
