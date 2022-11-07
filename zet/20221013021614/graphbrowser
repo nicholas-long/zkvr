@@ -35,8 +35,8 @@ if [ "$1" == "video" ]; then
     bat --language md --style=plain --color=always zet/$selid/README.md
   else
     # touch .helpless to hide help messages
-    [ -f './.helpless' ] || (bat --language md --style=plain --color=always <( awk -v "cmd=$3" ' $2 ~ cmd { print } ' zet/$MYID/README.md | head -n 1 ))
-    bat --color=always $2
+    [ -f './.helpless' ] || (bat --language md --style=plain --color=always <( awk -v "cmd=$3" ' $2 ~ cmd { gsub(/^ *- /,""); print } ' zet/$MYID/README.md | head -n 1 ))
+    bat --style=plain --color=always $2
   fi
   exit 0
 fi
