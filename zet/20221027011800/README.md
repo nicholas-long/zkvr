@@ -1,6 +1,10 @@
 # zetcli bash wrapper subcommand implementation
 
 - concept of `testing bash wrapper subcommand implementation`
+- helpful utility functions to add
+  - get title
+  - get tags
+  - get content?
 - copying some concepts from zet cmd
 - remaining subcommands to re-implement
   - `preview`
