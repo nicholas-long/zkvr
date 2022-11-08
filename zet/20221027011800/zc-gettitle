@@ -1,0 +1,16 @@
+#!/usr/bin/awk -f
+# get the title of a zettel card
+
+BEGIN {
+  if (ARGC > 1) {
+    for (n=1;n<ARGC;n++) {
+      if (ARGV[n] ~ /^[0-9]+$/) ARGV[n] = "zet/" ARGV[n] "/README.md"
+    }
+  }
+}
+/^# / {
+  gsub(/^# /, "")
+  if (argc > 2) print FILENAME, $0
+  else print
+  nextfile
+}
