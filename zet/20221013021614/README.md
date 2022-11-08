@@ -51,6 +51,7 @@ zet/20221013021614/getcopycontent zet/20221013021614/README.md
 - added: spraytag and nuketag features - fzf menu to add/del a hashtag to multiple links out of current node
   - TODO: filter out the ones that have it?
 - todo
+  - spawn multiple things at once - launch editor, each line is a title of a new card
   - add images / "figures" with preview using tesseract to OCR
   - record sequences of actions as scripts
     - replay if they exist
