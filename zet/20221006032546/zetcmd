@@ -491,7 +491,7 @@ EOF
     #TODO: need to redo anything?
 
     # run every autoexec_enrich, passing in the script's full path
-    find zet -executable -name autoexec_enrich | awk '
+    zet/20230926234809/find-executable zet -name autoexec_enrich | awk '
     BEGIN {
       FS = OFS = "/"
       "pwd" | getline wd
