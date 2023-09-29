@@ -2,3 +2,4 @@
 - [20221008063052](/zet/20221008063052/README.md) autorunning scripts in cards
 - [20221025024238](/zet/20221025024238/README.md) enumerate tags
 - [20221027011800](/zet/20221027011800/README.md) zetcli bash wrapper subcommand implementation
+- [20230926234809](/zet/20230926234809/README.md) a non-platform-specific find command script for executable files
