@@ -1,4 +1,4 @@
-#!/usr/bin/awk -f
+#!/usr/bin/env -S gawk -f
 # parse IDs from paths
 # example of awk match
 match($0, /zet.([0-9]+)\//, arr) { print arr[1] }

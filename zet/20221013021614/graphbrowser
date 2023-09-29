@@ -71,6 +71,7 @@ while [ 1 == "$going" ]; do
     print "~"
     print "/search"
     print "back"
+    print "fuzz"
     if (doc != "README.md") {
       id = doc
       gsub(/^zet\//,"",id)
@@ -319,11 +320,10 @@ while [ 1 == "$going" ]; do
       /^ *- \[.*\]\(\/zet\/[0-9]+\/README.md\)/ { print | "implementation/parseids" }
       /^zet\// { print }
     ' | awk '
-      BEGIN { c = ENVIRON["EDITOR"] " -p " ENVIRON["doc"] " " }
-      /^[0-9]+/ { c = c " zet/" $0 "/README.md" }
-      /^zet\// { c = c " \047" $0 "\047" }
-      END { system(c) }
-      '
+      BEGIN { print  ENVIRON["doc"] }
+      /^[0-9]+/ { print " zet/" $0 "/README.md" }
+      /^zet\// { print "\047" $0 "\047" }
+      ' | xargs -o $EDITOR -p
   elif [ "$act" == "zkcopy" ]; then
     otherzet=$(find / -readable -type d -name zet 2>/dev/null | fzf)
     if [ ! -z "$otherzet" ]; then
@@ -368,6 +368,8 @@ while [ 1 == "$going" ]; do
     if [ ! -z "$choice" ]; then
       git diff $(echo "$choice" | awk '{print $1}') -- "zet/$id" | (bat --paging=always || less)
     fi
+  elif [ "$act" == "fuzz" ]; then
+    fzf -m | xargs -o $EDITOR -p "$doc"
   elif [ "$act" == "enrich" ]; then
     echo ''
     echo ' ╭────────────────────────────────┬───╮'
