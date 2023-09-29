@@ -6,7 +6,6 @@
 - [20221023085822](/zet/20221023085822/README.md) implement returning paths or tables in graph query language
 - [20221026064448](/zet/20221026064448/README.md) check syntax of dash lists for tabstop 4
 - [20221027011800](/zet/20221027011800/README.md) zetcli bash wrapper subcommand implementation
-- [20221028173620](/zet/20221028173620/README.md) yq binaries
 - [20221101043303](/zet/20221101043303/README.md) important features and workflow tricks to mention on main page
 - [20221102180120](/zet/20221102180120/README.md) get some screenshots
 - [20221102180133](/zet/20221102180133/README.md) record terminal video of usage

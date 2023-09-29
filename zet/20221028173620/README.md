@@ -30,7 +30,6 @@ zet/20221024215216/README.md:  - could just hook up yq syntax and apply to all c
 # Related
 
 - [20221006032546](/zet/20221006032546/README.md) my original implementation of zet cmd
-- [20230922203837](/zet/20230922203837/README.md) get rid of all platform specific binaries from zkvr
 
 Tags:
 
