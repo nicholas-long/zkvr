@@ -1,4 +1,4 @@
-#!/usr/bin/awk -f
+#!/usr/bin/env -S gawk -f
 BEGIN { for (n = 1; n < ARGC; n++) if (ARGV[n] ~ /^[0-9]+$/) ARGV[n] = "zet/" ARGV[n] "/README.md" }
 BEGINFILE { lines = 0 }
 FNR == 1 { next }

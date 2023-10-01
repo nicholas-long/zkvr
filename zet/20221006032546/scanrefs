@@ -1,4 +1,4 @@
-#!/usr/bin/awk -f
+#!/usr/bin/env -S gawk -f
 # this script scans all files in one pass and prints all metadata and problems
 # ids that have un-enriched list item links are printed with cleanup
 # missing backlinks are printed with backlink

@@ -1,4 +1,4 @@
-#!/usr/bin/awk -f
+#!/usr/bin/env -S gawk -f
 # reformat whole markdown file
 ENDFILE {
   if (empties > 3) { # 3 empty lines allowed around references headings for zettel format
