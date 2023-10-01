@@ -11,7 +11,6 @@ zet/20221012171100/README.md
 # Related
 
 - [20221012144502](/zet/20221012144502/README.md) track modification dates
-- [20230926234809](/zet/20230926234809/README.md) a non-platform-specific find command script for executable files
 
 Tags:
 
