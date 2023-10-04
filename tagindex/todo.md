@@ -5,3 +5,4 @@
 - [20221013221136](/zet/20221013221136/README.md) graph query language for zettelkasten
 - [20221024215216](/zet/20221024215216/README.md) future enhancements to graph query language
 - [20221101052020](/zet/20221101052020/README.md) TODO: Your to-do list
+- [20230925055222](/zet/20230925055222/README.md) list of unfinished todo items

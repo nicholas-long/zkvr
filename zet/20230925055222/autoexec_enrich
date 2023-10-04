@@ -1,0 +1,16 @@
+#!/bin/bash
+
+export MY_DIR="$2"
+export MY_ID=$(echo "$MY_DIR" | awk -F / '{print $NF}')
+export ZET_IMPL=20221006032546
+echo "example enrich $MY_ID"
+
+filename="$MY_DIR/snippet"
+if [ ! -f "$filename" ]; then
+  echo "snippet command $filename does not exist!"
+  exit 1
+elif [ ! -x "$filename" ]; then
+  echo "snippet command $filename is not executable!"
+  exit 2
+fi
+zet/$ZET_IMPL/insertsnippet $MY_ID <( "$filename" )

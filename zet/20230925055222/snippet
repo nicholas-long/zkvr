@@ -1,0 +1,5 @@
+#!/bin/bash
+
+export LC_COLLATE=C # sort the same way on every machine
+grep -R '^ *- \[ \]' zet | sort
+./graphquery --human <( grep -R '^ *- \[ \]' zet | cut -d : -f 1 | sort -u | cut -d / -f 2 )

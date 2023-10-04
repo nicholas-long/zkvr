@@ -6,8 +6,6 @@ a script will check to see if the ID numbers appear on the main README.
 
 ```
 Missing:
-- [20221101043303](/zet/20221101043303/README.md) important features and workflow tricks to mention on main page #idea #list
-- [20221101052020](/zet/20221101052020/README.md) TODO: Your to-do list #todo #list #me #hub
 Extra:
 ```
 
@@ -27,6 +25,7 @@ Extra:
 - [20221101043303](/zet/20221101043303/README.md) important features and workflow tricks to mention on main page
 - [20221008063052](/zet/20221008063052/README.md) autorunning scripts in cards
 - [20221101052020](/zet/20221101052020/README.md) TODO: Your to-do list
+- [20230925055222](/zet/20230925055222/README.md) list of unfinished todo items
 
 Tags:
 
