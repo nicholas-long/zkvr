@@ -12,9 +12,9 @@ name: zc
 - for scripting
   - [20221013221136](/zet/20221013221136/README.md) graph query language
 - installing command shortcut to zc - useful for vim filters and as CLI
-    - `echo "$(pwd)/zc \$@" > ~/.local/bin/z`
-      - make sure `$HOME/.local/bin` is in your path
-      - still trying to figure out this shortcut since it's not perfect
+  - `echo "$(pwd)/zc \$@" > ~/.local/bin/z`
+    - make sure `$HOME/.local/bin` is in your path
+    - still trying to figure out this shortcut since it's not perfect
 
 - dependencies
   - vim or nvim
@@ -63,9 +63,7 @@ Options:
 - https://www.google.com/search?q=zettelkasten+fzf+vim ?
 - [20221027011800](/zet/20221027011800/README.md) zetcli bash wrapper subcommand implementation
 - [20221028173620](/zet/20221028173620/README.md) yq binaries
-- [20221006084204](/zet/20221006084204/README.md) future enhancements to zet cmd
 - [20221009192000](/zet/20221009192000/README.md) stuff to put on main page
-- [20221007043646](/zet/20221007043646/README.md) findings about implementing zettelkasten
 - [20221006013313](/zet/20221006013313/README.md) zettelkasten
 - [20221014074318](/zet/20221014074318/README.md) important choices of tech stack
 - [20221025024238](/zet/20221025024238/README.md) enumerate tags
@@ -73,8 +71,10 @@ Options:
 - [20221008063052](/zet/20221008063052/README.md) autorunning scripts in cards
 - [20221014025416](/zet/20221014025416/README.md) clone a subsection of a graph by tag boundaries
 - [20221011145143](/zet/20221011145143/README.md) bat command pretty printer
-- [20221014215609](/zet/20221014215609/README.md) finished, but with ongoing related work
 - [20221103162623](/zet/20221103162623/README.md) move zetcmd to wrapper CLI and remove fzf subcommands from CLI
+- [20230926224444](/zet/20230926224444/README.md) updating scripts to use gawk when possible
+- [20230927001343](/zet/20230927001343/README.md) places to update find command to use new executable version in order to be compatible on mac
+- [20230929023221](/zet/20230929023221/README.md) testing user interfaces in fzf
 
 Tags:
 

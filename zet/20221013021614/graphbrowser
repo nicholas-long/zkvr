@@ -62,6 +62,17 @@ while [ 1 == "$going" ]; do
     doc = ENVIRON["doc"]
     print "edit", doc
 
+    if (doc != "README.md") {
+      id = doc
+      gsub(/^zet\//,"",id)
+      gsub(/\/.*$/,"",id)
+      lsdir = "find zet/" id " -type f"
+      cmd = lsdir " | grep -v \047README\\.md\047"
+      while ((cmd | getline) > 0) {
+        print "edit", $0
+      }
+      close(cmd)
+    }
     if (ENVIRON["TMUX"] ~ /tmux/) {
       print "copy..."
       print "tab"
@@ -77,12 +88,6 @@ while [ 1 == "$going" ]; do
       gsub(/^zet\//,"",id)
       gsub(/\/.*$/,"",id)
       if (id != "README.md") {
-        lsdir = "find zet/" id " -type f"
-        cmd = lsdir " | grep -v \047README\\.md\047"
-        while ((cmd | getline) > 0) {
-          print "edit", $0
-        }
-        close(cmd)
         print "spawn"
         print "xfer"
         print "fxfer"
@@ -277,7 +282,7 @@ while [ 1 == "$going" ]; do
       sleep 2
     fi
   elif [ "$act" == "copy..." ]; then
-    zet/$MYID/getcopycontent "$doc" | fzf --tac '--prompt=tab select many :' -m | tmux loadb -
+    ( zet/$MYID/getcopycontent "$doc" && zet/20231004044241/url-scrape "$doc" ) | fzf --tac '--prompt=tab select many :' -m | tmux loadb -
   elif [ "$act" == "copypath" ]; then
     echo -n "$doc" | tmux loadb -
     echo "copied $doc"

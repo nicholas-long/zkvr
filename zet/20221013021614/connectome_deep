@@ -1,6 +1,6 @@
 #!/bin/bash
 
-awk '
+gawk '
 BEGINFILE {
   rl=related=gotheading=0
   id = FILENAME
