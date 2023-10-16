@@ -4,7 +4,6 @@
 - tabstop should be 2
 
 ```
-zet/20221006032546/README.md     - `echo "$(pwd)/zc \$@" > ~/.local/bin/z`
 ```
 
 ` zet/20221026064448/README.md `

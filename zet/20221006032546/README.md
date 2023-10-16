@@ -72,9 +72,9 @@ Options:
 - [20221014025416](/zet/20221014025416/README.md) clone a subsection of a graph by tag boundaries
 - [20221011145143](/zet/20221011145143/README.md) bat command pretty printer
 - [20221103162623](/zet/20221103162623/README.md) move zetcmd to wrapper CLI and remove fzf subcommands from CLI
-- [20230926224444](/zet/20230926224444/README.md) updating scripts to use gawk when possible
-- [20230927001343](/zet/20230927001343/README.md) places to update find command to use new executable version in order to be compatible on mac
-- [20230929023221](/zet/20230929023221/README.md) testing user interfaces in fzf
+- [20221006084204](/zet/20221006084204/README.md) future enhancements to zet cmd
+- [20221007043646](/zet/20221007043646/README.md) findings about implementing zettelkasten
+- [20221014215609](/zet/20221014215609/README.md) finished, but with ongoing related work
 
 Tags:
 
