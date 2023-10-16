@@ -79,6 +79,7 @@ zet/20221013021614/getcopycontent zet/20221013021614/README.md
 - [20221105021715](/zet/20221105021715/README.md) git diff picker feature
 - [20221101163755](/zet/20221101163755/README.md) fix clone
 - [20221008042814](/zet/20221008042814/README.md) WIP
+- [20231004044241](/zet/20231004044241/README.md) script to strip and scrape all URLs out of text
 
 Tags:
 

@@ -36,4 +36,4 @@ fi
 
 Tags:
 
-    #shortcmd #bash #command
+    #shortcmd #bash #command #script

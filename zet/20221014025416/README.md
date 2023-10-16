@@ -53,13 +53,13 @@ highlevel=20221011182140 # high level machine overview from notes template
 
 # Related
 
-- [20221006084204](/zet/20221006084204/README.md) future enhancements to zet cmd
 - [20221013221136](/zet/20221013221136/README.md) graph query language for zettelkasten
 - [20221006032546](/zet/20221006032546/README.md) my original implementation of zet cmd
 - [20221013021614](/zet/20221013021614/README.md) zkvr terminal graph browser
 - [20221009095853](/zet/20221009095853/README.md) finished
+- [20221006084204](/zet/20221006084204/README.md) future enhancements to zet cmd
 - [20221101163755](/zet/20221101163755/README.md) fix clone
 
 Tags:
 
-    #idea
+    #enhancement

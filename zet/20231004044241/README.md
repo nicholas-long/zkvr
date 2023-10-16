@@ -1,6 +1,7 @@
 # script to strip and scrape all URLs out of text
 
 - concept of `script to strip all URLs out of text`
+- used in zkvr for the copy functionality to find things to copy off of the markdown
 
 ```bash
 zcat /home/parallels/vulnerable-github-data/grepgithub.gz | url-scrape
@@ -10,9 +11,8 @@ zcat /home/parallels/vulnerable-github-data/grepgithub.gz | url-scrape
 
 # Related
 
-- [20231003021548](/zet/20231003021548/README.md) script to enumerate all files in an aws s3 bucket url recursively
-- [20230928171946](/zet/20230928171946/README.md) data analysis scripting hub
-- [20230929022947](/zet/20230929022947/README.md) script to get headings from wikipedia page
+- [20221013021614](/zet/20221013021614/README.md) zkvr terminal graph browser
+- [20221120183400](/zet/20221120183400/README.md) make copy option process indentation of code blocks properly
 
 Tags:
 
