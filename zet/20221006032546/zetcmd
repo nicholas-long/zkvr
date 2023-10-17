@@ -298,8 +298,15 @@ EOF
   unlink)
     #arg arg2
     echo "unlinking $arg $arg2" > /dev/stderr
-    [ -f "zet/$arg2/README.md" ] && sed -i "/$arg/d" zet/$arg2/README.md
-    [ -f "zet/$arg/README.md" ] && sed -i "/$arg2/d" zet/$arg/README.md
+    if [[ $(uname) =~ Darwin ]]; then
+      [ -f "zet/$arg2/README.md" ] && sed -i.bak "/$arg/d" zet/$arg2/README.md
+      [ -f "zet/$arg/README.md" ] && sed -i.bak "/$arg2/d" zet/$arg/README.md
+      # sed requires backup files on darwin in order to do in place edits
+      rm zet/$arg/README.md.bak zet/$arg2/README.md.bak
+    else
+      [ -f "zet/$arg2/README.md" ] && sed -i "/$arg/d" zet/$arg2/README.md
+      [ -f "zet/$arg/README.md" ] && sed -i "/$arg2/d" zet/$arg/README.md
+    fi
     ;;
   rm)
     del_id="$arg"
