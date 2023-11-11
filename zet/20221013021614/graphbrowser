@@ -244,11 +244,15 @@ while [ 1 == "$going" ]; do
     awk '{print "zet/" $0 "/README.md"}' $selection | xargs -n 1 tmux new-window "$GRAPH_PROG"
     rm "$selection"
   elif [ "$act" == "/search" ]; then
-    if [ -z $TMUX ]; then
+    if [[ "$doc" == "README.md" ]]; then # even if tmux, don't spawn new tabs searching from main page
       newid=$(zet/$MYID/connectome_deep | fzf | awk '{print $1}')
       export prevdoc="$doc"
       export doc=zet/$newid/README.md
-    else
+    elif [ -z $TMUX ]; then # if no tmux then change docuent and dont spawn tab
+      newid=$(zet/$MYID/connectome_deep | fzf | awk '{print $1}')
+      export prevdoc="$doc"
+      export doc=zet/$newid/README.md
+    else # spawn tmux tabs
       tf=$(mktemp)
       zet/$MYID/connectome_deep | fzf -m | awk '{print $1}' | sort -u > $tf
       for f in $(cat $tf); do
