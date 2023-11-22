@@ -13,11 +13,25 @@
 
 ` zet/20221007193324/README.md `
 
+# github action permission issues with automatic enrich workflows
+
+- concept of `github action permission issues with automatic enrich workflows`
+- https://stackoverflow.com/questions/72851548/permission-denied-to-github-actionsbot
+- need to enable read and write permissions in github repository workflow settings
+  - Settings -> Actions -> General -> Workflow permissions
+
+```
+```
+
+
 # Related
 
 - [20221006032546](/zet/20221006032546/README.md) my original implementation of zet cmd
 - [20221008063052](/zet/20221008063052/README.md) autorunning scripts in cards
+- [20231016050313](/zet/20231016050313/README.md) scanning code for vulnerabilities
+- [20230922214323](/zet/20230922214323/README.md) this environment
+- [20230922214602](/zet/20230922214602/README.md) things i want to implement in zkvr after working on the environment
 
 Tags:
 
-    #git
+    #github #script #fix #git
