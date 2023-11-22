@@ -1,5 +1,5 @@
 - [20221006032546](/zet/20221006032546/README.md) my original implementation of zet cmd
 - [20221013021614](/zet/20221013021614/README.md) zkvr terminal graph browser
 - [20221027011800](/zet/20221027011800/README.md) zetcli bash wrapper subcommand implementation
-- [20221028173620](/zet/20221028173620/README.md) yq binaries
 - [20221105220915](/zet/20221105220915/README.md) add recurring timers using github cron actions
+- [20231122205624](/zet/20231122205624/README.md) zkvr bugs fixed and features added

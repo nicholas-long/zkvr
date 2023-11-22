@@ -86,7 +86,6 @@ Options:
 - https://github.com/naps62/zk - another implementation in bash for reference
 - https://www.google.com/search?q=zettelkasten+fzf+vim ?
 - [20221027011800](/zet/20221027011800/README.md) zetcli bash wrapper subcommand implementation
-- [20221028173620](/zet/20221028173620/README.md) yq binaries
 - [20221009192000](/zet/20221009192000/README.md) stuff to put on main page
 - [20221006013313](/zet/20221006013313/README.md) zettelkasten
 - [20221025024238](/zet/20221025024238/README.md) enumerate tags
@@ -97,6 +96,7 @@ Options:
 - [20221006084204](/zet/20221006084204/README.md) future enhancements to zet cmd
 - [20221007043646](/zet/20221007043646/README.md) findings about implementing zettelkasten
 - [20221014215609](/zet/20221014215609/README.md) finished, but with ongoing related work
+- [20231122205624](/zet/20231122205624/README.md) zkvr bugs fixed and features added
 
 Tags:
 
