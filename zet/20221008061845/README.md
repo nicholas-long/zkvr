@@ -18,8 +18,8 @@ hub node for `workflow`
 - [20221006213953](/zet/20221006213953/README.md) video notes
 - [20221008042814](/zet/20221008042814/README.md) WIP
 - [20221007044552](/zet/20221007044552/README.md) todo or to-try list
-- [20221101043303](/zet/20221101043303/README.md) important features and workflow tricks to mention on main page
 - [20221101052020](/zet/20221101052020/README.md) TODO: Your to-do list
+- [20231122204839](/zet/20231122204839/README.md) zkvr work on demo features to show off
 
 Tags:
 

@@ -7,7 +7,6 @@ stuff i am working on.
 # Related
 
 - [20221120183400](/zet/20221120183400/README.md) make copy option process indentation of code blocks properly
-- [20221101043303](/zet/20221101043303/README.md) important features and workflow tricks to mention on main page
 - [20221013021614](/zet/20221013021614/README.md) zkvr terminal graph browser
 - [20221023085822](/zet/20221023085822/README.md) implement returning paths or tables in graph query language
 - [20221006013313](/zet/20221006013313/README.md) zettelkasten

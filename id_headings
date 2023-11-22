@@ -27,9 +27,7 @@
 20221028172836	zet/20221028172836/README.md	symlink dockerfile
 20221028173620	zet/20221028173620/README.md	yq binaries
 20221031092923	zet/20221031092923/README.md	template for video notes
-20221101043303	zet/20221101043303/README.md	important features and workflow tricks to mention on main page
 20221101052020	zet/20221101052020/README.md	TODO: Your to-do list
-20221101163755	zet/20221101163755/README.md	fix clone
 20221103162623	zet/20221103162623/README.md	move zetcmd to wrapper CLI and remove fzf subcommands from CLI
 20221105021715	zet/20221105021715/README.md	git diff picker feature
 20221105220915	zet/20221105220915/README.md	add recurring timers using github cron actions
@@ -43,3 +41,4 @@
 20231114070621	zet/20231114070621/README.md	script for chatGPT prompt to select tags for documents automatically
 20231121064457	zet/20231121064457/README.md	merge note functionality for zkvr
 20231122204839	zet/20231122204839/README.md	zkvr work on demo features to show off
+20231122205624	zet/20231122205624/README.md	zkvr bugs fixed
