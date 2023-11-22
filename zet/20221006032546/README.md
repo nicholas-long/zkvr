@@ -54,6 +54,30 @@ Options:
 
 ` zet/20221006032546/README.md `
 
+# important choices of tech stack
+
+- platform = unix
+  - text files = programs
+  - exit code = status code for error handling
+  - text output of program = result
+  - filesystem directory structure and files on disk = actual data, not just a path to look up stuff in contents
+  - unix shell scripting has been around, in some form or another, since the late 70s, so i'm comfortable using that as a platform.
+    - programs = files
+    - the outputs of programs = files
+    - files = variables
+    - big functions = programs
+    - piping data from one place to another is kind of like `.map` or `.Select` in js and .NET
+  - don't bother reimplementing functionality that's already provided by an existing program or platform if you can reasonably integrate it by changing it or scripting it using the most trivial of text processing techniques
+- platform += markdown
+  - markdown is becoming standardized in some ways, and used across platforms
+    - will this iteration last forever? probably not. but you can fix a whole bunch of plain text files really easily with sed and awk.
+  - you could run this in a docker somewhere easily - it's kind of cool that they can run code for us, for instance, but i can do that myself too if i have to.
+
+
+```
+```
+
+
 # Related
 
 - [20221013021614](/zet/20221013021614/README.md) zkvr terminal graph browser
@@ -65,7 +89,6 @@ Options:
 - [20221028173620](/zet/20221028173620/README.md) yq binaries
 - [20221009192000](/zet/20221009192000/README.md) stuff to put on main page
 - [20221006013313](/zet/20221006013313/README.md) zettelkasten
-- [20221014074318](/zet/20221014074318/README.md) important choices of tech stack
 - [20221025024238](/zet/20221025024238/README.md) enumerate tags
 - [20221007193324](/zet/20221007193324/README.md) github actions
 - [20221008063052](/zet/20221008063052/README.md) autorunning scripts in cards
@@ -78,4 +101,4 @@ Options:
 
 Tags:
 
-    #zettelkasten #bash #coding #program #script #command #command #repo
+    #script #zettelkasten #idea #command #bash #program #repo #coding
