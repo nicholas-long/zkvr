@@ -9,7 +9,7 @@ things that are finished.
 - [20221013221136](/zet/20221013221136/README.md) graph query language for zettelkasten
 - [20221014215609](/zet/20221014215609/README.md) finished, but with ongoing related work
 - [20221012144502](/zet/20221012144502/README.md) track modification dates
-- [20221028172836](/zet/20221028172836/README.md) symlink dockerfile
+- [20221028172836](/zet/20221028172836/README.md) dockerfile for zkvr
 - [20221009192000](/zet/20221009192000/README.md) stuff to put on main page
 - [20221026064448](/zet/20221026064448/README.md) check syntax of dash lists for tabstop 4
 - [20221008063052](/zet/20221008063052/README.md) autorunning scripts in cards

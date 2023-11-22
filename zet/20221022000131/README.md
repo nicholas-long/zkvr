@@ -26,7 +26,7 @@ chmod +x zet/20221022000131/entrypoint
 # Related
 
 - [20221009095853](/zet/20221009095853/README.md) finished
-- [20221028172836](/zet/20221028172836/README.md) symlink dockerfile
+- [20221028172836](/zet/20221028172836/README.md) dockerfile for zkvr
 
 Tags:
 

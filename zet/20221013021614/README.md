@@ -70,7 +70,7 @@ zet/20221013021614/getcopycontent zet/20221013021614/README.md
 # Related
 
 - [20221006032546](/zet/20221006032546/README.md) my original implementation of zet cmd
-- [20221028172836](/zet/20221028172836/README.md) symlink dockerfile
+- [20221028172836](/zet/20221028172836/README.md) dockerfile for zkvr
 - [20221009192000](/zet/20221009192000/README.md) stuff to put on main page
 - [20221025024238](/zet/20221025024238/README.md) enumerate tags
 - [20221014025416](/zet/20221014025416/README.md) clone a subsection of a graph by tag boundaries
