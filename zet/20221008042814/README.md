@@ -24,7 +24,6 @@ stuff i am working on.
 - [20221024215216](/zet/20221024215216/README.md) future enhancements to graph query language
 - [20221014215609](/zet/20221014215609/README.md) finished, but with ongoing related work
 - [20221008061845](/zet/20221008061845/README.md) workflow
-- [20221105224810](/zet/20221105224810/README.md) launch browser to current card on github
 - [20221101052020](/zet/20221101052020/README.md) TODO: Your to-do list
 - [20230925055222](/zet/20230925055222/README.md) list of unfinished todo items
 - [20231112170729](/zet/20231112170729/README.md) script to get remote github URL from git repository

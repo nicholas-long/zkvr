@@ -12,5 +12,5 @@
 - [20221103162623](/zet/20221103162623/README.md) move zetcmd to wrapper CLI and remove fzf subcommands from CLI
 - [20221105021715](/zet/20221105021715/README.md) git diff picker feature
 - [20221105220915](/zet/20221105220915/README.md) add recurring timers using github cron actions
-- [20221105224810](/zet/20221105224810/README.md) launch browser to current card on github
 - [20221120183400](/zet/20221120183400/README.md) make copy option process indentation of code blocks properly
+- [20231112170729](/zet/20231112170729/README.md) script to get remote github URL from git repository

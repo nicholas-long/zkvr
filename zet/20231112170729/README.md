@@ -27,6 +27,20 @@ currentBranch=$(git branch --show-current)
 
 ` zet/20221105224810/README.md `
 
+# launch browser to current card on github
+
+- remote URL is available in `.git/logs/refs/remotes/origin`
+- firefox or chromium?
+- specific branch?
+
+```bash
+# get current git remote URL
+currentRemoteUrl=$(awk '{print $NF}' .git/logs/refs/remotes/origin/HEAD)
+currentBranch=$(git branch --show-current)
+```
+
+` zet/20221105224810/README.md `
+
 # Related
 
 - [20230919172630](/zet/20230919172630/README.md) script to get root of repository or obsidian knowledge base
@@ -35,4 +49,4 @@ currentBranch=$(git branch --show-current)
 
 Tags:
 
-    #feature #web #url #script #shortcmd #zet #git
+    #url #web #feature #script #idea #shortcmd #git #zet
