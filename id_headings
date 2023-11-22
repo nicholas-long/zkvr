@@ -28,7 +28,6 @@
 20221028173620	zet/20221028173620/README.md	yq binaries
 20221031092923	zet/20221031092923/README.md	template for video notes
 20221101052020	zet/20221101052020/README.md	TODO: Your to-do list
-20221103162623	zet/20221103162623/README.md	move zetcmd to wrapper CLI and remove fzf subcommands from CLI
 20221105220915	zet/20221105220915/README.md	add recurring timers using github cron actions
 20221105222236	zet/20221105222236/README.md	cron syntax
 20221120183400	zet/20221120183400/README.md	make copy option process indentation of code blocks properly

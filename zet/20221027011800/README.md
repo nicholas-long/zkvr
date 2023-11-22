@@ -26,13 +26,22 @@ ln -s zet/20221027011800/zetwrap zetcli
 
 ` zet/20221027011800/README.md `
 
+# move zetcmd to wrapper CLI and remove fzf subcommands from CLI
+
+- concept of `move zetcmd to wrapper CLI`
+- remove fzf subcommands from CLI
+
+```
+```
+
+
 # Related
 
 - [20221006032546](/zet/20221006032546/README.md) my original implementation of zet cmd
-- [20221103162623](/zet/20221103162623/README.md) move zetcmd to wrapper CLI and remove fzf subcommands from CLI
 - [20221013021614](/zet/20221013021614/README.md) zkvr terminal graph browser
 - [20221105220915](/zet/20221105220915/README.md) add recurring timers using github cron actions
+- [20221101052020](/zet/20221101052020/README.md) TODO: Your to-do list
 
 Tags:
 
-    #idea #bash #command #program #filesystem
+    #filesystem #command #idea #bash #program

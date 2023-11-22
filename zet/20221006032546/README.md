@@ -94,7 +94,6 @@ Options:
 - [20221008063052](/zet/20221008063052/README.md) autorunning scripts in cards
 - [20221014025416](/zet/20221014025416/README.md) clone a subsection of a graph by tag boundaries
 - [20221011145143](/zet/20221011145143/README.md) bat command pretty printer
-- [20221103162623](/zet/20221103162623/README.md) move zetcmd to wrapper CLI and remove fzf subcommands from CLI
 - [20221006084204](/zet/20221006084204/README.md) future enhancements to zet cmd
 - [20221007043646](/zet/20221007043646/README.md) findings about implementing zettelkasten
 - [20221014215609](/zet/20221014215609/README.md) finished, but with ongoing related work

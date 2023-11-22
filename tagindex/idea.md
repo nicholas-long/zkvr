@@ -5,7 +5,6 @@
 - [20221023085822](/zet/20221023085822/README.md) implement returning paths or tables in graph query language
 - [20221026064448](/zet/20221026064448/README.md) check syntax of dash lists for tabstop 4
 - [20221027011800](/zet/20221027011800/README.md) zetcli bash wrapper subcommand implementation
-- [20221103162623](/zet/20221103162623/README.md) move zetcmd to wrapper CLI and remove fzf subcommands from CLI
 - [20221105220915](/zet/20221105220915/README.md) add recurring timers using github cron actions
 - [20221120183400](/zet/20221120183400/README.md) make copy option process indentation of code blocks properly
 - [20231112170729](/zet/20231112170729/README.md) script to get remote github URL from git repository
