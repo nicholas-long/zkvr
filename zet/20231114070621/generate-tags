@@ -1,0 +1,8 @@
+#!/bin/bash
+
+# generate tags for document passed in stdin
+
+SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
+
+$SCRIPT_DIR/generate-prompt "$1" | gpt --model gpt-3.5-turbo --prompt - | grep -Eo '#[A-Za-z]+' | sed 's/^#//g'
+# use a grep pattern to pull out tags to keep output format consistent

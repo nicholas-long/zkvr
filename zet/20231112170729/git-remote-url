@@ -1,0 +1,24 @@
+#!/bin/bash
+
+SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
+
+if [ -d ".git" ]; then
+  export repopath=$(pwd)
+else
+  export repopath=$($SCRIPT_DIR/../20230919172630/root-knowledge-base-repo-path $(pwd))
+fi
+export url=$(git remote get-url $(git remote | head -n 1))
+if [ -z "$1" ]; then # if theres no argument then just echo the remote URL
+  echo "$url"
+else
+  branch=$(git branch | awk '{print $NF}')
+  export filepath="$(pwd)/$1"
+  relativefile=$(awk '
+    BEGIN {
+      filepath = ENVIRON["filepath"]
+      repopath = ENVIRON["repopath"]
+      print substr(filepath, length(repopath) + 2) # get rid of slash and last char in 1 based string indexing
+    }
+    ')
+  echo "$url/blob/$branch/$relativefile"
+fi

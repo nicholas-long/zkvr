@@ -1,0 +1,14 @@
+#!/usr/bin/awk -f
+
+NR > 1 { print last }
+{ last = $0 }
+END {
+  for (n = 1; n <= NF; n++) {
+    tags[$n] = 1
+  }
+  for (t in tags) { # loop over unique tags
+    if (tagline) tagline = tagline " " t # add all the tags in
+    else tagline = t
+  }
+  print "    " tagline
+}

@@ -75,6 +75,7 @@ while [ 1 == "$going" ]; do
     }
     if (ENVIRON["TMUX"] ~ /tmux/) {
       print "copy..."
+      print "copyURL"
       print "tab"
       print "copypath"
       print "workdir"
@@ -96,6 +97,7 @@ while [ 1 == "$going" ]; do
         print "unlink"
         print "addtags"
         print "deltags"
+        print "merge-into"
         print "spraytag"
         print "nuketag"
         print "clone"
@@ -108,6 +110,7 @@ while [ 1 == "$going" ]; do
     }
     print "tagindex"
     print "enrich"
+    print "autotag"
     print "stat"
     print "quit"
     print "zkcopy"
@@ -408,6 +411,43 @@ while [ 1 == "$going" ]; do
     templateid=$(cat tagindex/templatemain.md | fzf | implementation/parseids)
     if [[ "$templateid" =~ ^[0-9]+$ ]]; then
       zet/20221014025416/clonecardto $templateid $id
+    fi
+  elif [ "$act" == "copyURL" ]; then
+    zet/20231112170729/git-remote-url "$doc" | tmux loadb -
+  elif [ "$act" == "autotag" ]; then
+    temptags=$(mktemp)
+    echo "Generating tags..."
+    zet/20231114070621/generate-tags "$doc" > "$temptags"
+    echo "Tags:"
+    cat "$temptags"
+    cat "$temptags" | xargs -IR -n 1 ./zc addtag -t R "$id"
+    rm "$temptags"
+  elif [ "$act" == "merge-into" ]; then
+    # select a link to merge into
+    sel=$(awk '
+      /^ *- \[.*\]\(\/zet\/[0-9]+\/README.md\)/ {
+        print $0
+        fflush()
+      }
+      ' "$doc" | fzf | zet/$IMPL/parseids)
+    echo "merge into $sel"
+    sleep 1
+    if [ ! -z "$sel" ]; then
+      # write to a temp file
+      mergefile=$(mktemp)
+      # call this script to merge the destination readme and the source readme into temp file
+      zet/20231121064457/merge-markdown-related-links zet/$sel/README.md "$doc" | zet/20231121064457/fix-duplicate-tags > "$mergefile"
+      # remove self references from resulting file
+      sed -i "/^- .*$sel/d" "$mergefile"
+      # move temp file to dest readme
+      mv "$mergefile" "zet/$sel/README.md"
+      # delete source directory
+      rm -rf zet/$id
+      # set current document to point to dest readme
+      export doc="zet/$sel/README.md"
+      # enrich to update all backlinks
+      $prog enrich
+      $prog enrich
     fi
   fi
 done

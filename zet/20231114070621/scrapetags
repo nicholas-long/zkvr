@@ -1,0 +1,3 @@
+#!/bin/bash
+
+grep -Eo '#[A-Za-z]+' | sed 's/^#//g'

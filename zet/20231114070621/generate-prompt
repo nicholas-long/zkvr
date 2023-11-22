@@ -1,0 +1,9 @@
+#!/bin/bash
+
+#echo '```'
+echo "Using the following set of hashtags,"
+cat $(root-knowledge-base-repo-path)/all_tags
+echo 'choose an appropriate set of at most five tags for the following markdown document:'
+echo ''
+
+cat "$1"
