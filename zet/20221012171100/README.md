@@ -12,6 +12,7 @@ zet/20221012171100/README.md
 
 - [20221012144502](/zet/20221012144502/README.md) track modification dates
 - [20231121064457](/zet/20231121064457/README.md) merge note functionality for zkvr
+- [20231122204839](/zet/20231122204839/README.md) zkvr demo features to show off
 
 Tags:
 
