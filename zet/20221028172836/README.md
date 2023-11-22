@@ -1,4 +1,4 @@
-# symlink dockerfile
+# dockerfile for zkvr
 
 - concept of `symlink dockerfile`
 - tested and it still works

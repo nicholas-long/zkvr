@@ -1,1 +1,1 @@
-- [20221021071146](/zet/20221021071146/README.md) delete things marked as #DEL periodically
+- [20221008061845](/zet/20221008061845/README.md) workflow
