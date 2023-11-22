@@ -15,9 +15,8 @@ things that are finished.
 - [20221008063052](/zet/20221008063052/README.md) autorunning scripts in cards
 - [20221014025416](/zet/20221014025416/README.md) clone a subsection of a graph by tag boundaries
 - [20221022000131](/zet/20221022000131/README.md) put tmux and vim rc config in dockerfile
-- [20221105021715](/zet/20221105021715/README.md) git diff picker feature
 - [20221105220915](/zet/20221105220915/README.md) add recurring timers using github cron actions
-- [20231122205624](/zet/20231122205624/README.md) zkvr bugs fixed
+- [20231122205624](/zet/20231122205624/README.md) zkvr bugs fixed and features added
 
 Tags:
 

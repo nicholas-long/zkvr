@@ -1,1 +1,1 @@
-- [20231122205624](/zet/20231122205624/README.md) zkvr bugs fixed
+- [20231122205624](/zet/20231122205624/README.md) zkvr bugs fixed and features added

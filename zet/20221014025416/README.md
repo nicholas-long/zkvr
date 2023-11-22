@@ -58,7 +58,7 @@ highlevel=20221011182140 # high level machine overview from notes template
 - [20221013021614](/zet/20221013021614/README.md) zkvr terminal graph browser
 - [20221009095853](/zet/20221009095853/README.md) finished
 - [20221006084204](/zet/20221006084204/README.md) future enhancements to zet cmd
-- [20231122205624](/zet/20231122205624/README.md) zkvr bugs fixed
+- [20231122205624](/zet/20231122205624/README.md) zkvr bugs fixed and features added
 
 Tags:
 

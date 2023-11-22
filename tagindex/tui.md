@@ -1,2 +1,2 @@
 - [20221013021614](/zet/20221013021614/README.md) zkvr terminal graph browser
-- [20221105021715](/zet/20221105021715/README.md) git diff picker feature
+- [20231122205624](/zet/20231122205624/README.md) zkvr bugs fixed and features added

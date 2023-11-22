@@ -77,14 +77,13 @@ zet/20221013021614/getcopycontent zet/20221013021614/README.md
 - [20221011145143](/zet/20221011145143/README.md) bat command pretty printer
 - [20221027011800](/zet/20221027011800/README.md) zetcli bash wrapper subcommand implementation
 - [20221014215609](/zet/20221014215609/README.md) finished, but with ongoing related work
-- [20221105021715](/zet/20221105021715/README.md) git diff picker feature
 - [20221008042814](/zet/20221008042814/README.md) WIP
 - [20231004044241](/zet/20231004044241/README.md) script to strip and scrape all URLs out of text
 - [20231114070621](/zet/20231114070621/README.md) script for chatGPT prompt to select tags for documents automatically
 - [20231121064457](/zet/20231121064457/README.md) merge note functionality for zkvr
 - [20231112170729](/zet/20231112170729/README.md) script to get remote github URL from git repository
 - [20231122204839](/zet/20231122204839/README.md) zkvr work on demo features to show off
-- [20231122205624](/zet/20231122205624/README.md) zkvr bugs fixed
+- [20231122205624](/zet/20231122205624/README.md) zkvr bugs fixed and features added
 
 Tags:
 
