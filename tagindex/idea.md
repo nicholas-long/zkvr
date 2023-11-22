@@ -11,4 +11,4 @@
 - [20221105220915](/zet/20221105220915/README.md) add recurring timers using github cron actions
 - [20221120183400](/zet/20221120183400/README.md) make copy option process indentation of code blocks properly
 - [20231112170729](/zet/20231112170729/README.md) script to get remote github URL from git repository
-- [20231122204839](/zet/20231122204839/README.md) zkvr demo features to show off
+- [20231122204839](/zet/20231122204839/README.md) zkvr work on demo features to show off

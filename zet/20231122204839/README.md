@@ -1,4 +1,4 @@
-# zkvr demo features to show off
+# zkvr work on demo features to show off
 
 - concept of `zkvr demo features to show off`
 
@@ -41,6 +41,7 @@
 - [20221008042814](/zet/20221008042814/README.md) WIP
 - [20221012171100](/zet/20221012171100/README.md) recently created nodes hub
 - https://asciinema.org/
+- [20221013021614](/zet/20221013021614/README.md) zkvr terminal graph browser
 
 Tags:
 
