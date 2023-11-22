@@ -6,8 +6,6 @@
 - [20221026064448](/zet/20221026064448/README.md) check syntax of dash lists for tabstop 4
 - [20221027011800](/zet/20221027011800/README.md) zetcli bash wrapper subcommand implementation
 - [20221101043303](/zet/20221101043303/README.md) important features and workflow tricks to mention on main page
-- [20221102180120](/zet/20221102180120/README.md) get some screenshots
-- [20221102180133](/zet/20221102180133/README.md) record terminal video of usage
 - [20221103162623](/zet/20221103162623/README.md) move zetcmd to wrapper CLI and remove fzf subcommands from CLI
 - [20221105021715](/zet/20221105021715/README.md) git diff picker feature
 - [20221105220915](/zet/20221105220915/README.md) add recurring timers using github cron actions

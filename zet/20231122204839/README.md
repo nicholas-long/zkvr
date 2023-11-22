@@ -16,12 +16,31 @@
 ```
 
 
+# get some screenshots
+
+- screenshots of specific zkvr features
+  - tmux copy
+  - spawn
+  - xfer
+- screenshot of graph view in obsidian
+
+```
+```
+
+
+# record terminal video of usage
+
+- concept of `record terminal video of usage`
+
+```
+```
+
+
 # Related
 
 - [20221008042814](/zet/20221008042814/README.md) WIP
 - [20221012171100](/zet/20221012171100/README.md) recently created nodes hub
-- [20221102180120](/zet/20221102180120/README.md) get some screenshots
-- [20221102180133](/zet/20221102180133/README.md) record terminal video of usage
+- https://asciinema.org/
 
 Tags:
 
