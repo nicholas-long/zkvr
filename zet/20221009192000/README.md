@@ -18,7 +18,6 @@ Extra:
 - [20221008042814](/zet/20221008042814/README.md) WIP
 - [20221006032546](/zet/20221006032546/README.md) my original implementation of zet cmd
 - [20221013021614](/zet/20221013021614/README.md) zkvr terminal graph browser
-- [20221003150098](/zet/20221003150098/README.md) TODO
 - [20221007044552](/zet/20221007044552/README.md) todo or to-try list
 - [20221009095853](/zet/20221009095853/README.md) finished
 - [20221014215609](/zet/20221014215609/README.md) finished, but with ongoing related work
