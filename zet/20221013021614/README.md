@@ -16,11 +16,14 @@
   - `deltags`     - remove multiple tags from card
   - `spraytag`    - add a tag to multiple links on a card at once. select with fuzzy search.
   - `edit ...`    - edit card or attachments in vim
-  - `/deep`       - deep keyword search combining links, titles, content, and fzf fuzzy finding. launches new tmux windows if tmux is running.
+  - `/search`     - deep keyword search combining links, titles, content, and fzf fuzzy finding. launches new tmux windows if tmux is running.
   - `~`           - return to home page
   - `spawn`       - create a new zettel card linked to here. enter title at prompt. new card is available to navigate and edit immediately.
+  - `merge-into`  - merge the content of the current card into a linked card, updating backlinks
+  - `autotag`     - use ChatGPT to automatically select tags for the current document
   - `clone`       - copy a template card in, replacing current card. copy entire linked network of cards with tag `#template`. capable of creating large structures of notes.
   - `copy...`     - if running in tmux, select text to copy from snippets with fzf
+  - `copyURL`     - if running in tmux, copy the remote github URL to view the current file
   - `copypath`    - if running in tmux, copy the current markdown file path to tmux buffer
   - `xfer`        - copy between cards or attached files easily by selecting files or cards to open alongside `README.md` in vim tabs
   - `fxfer`       - copy files between cards
