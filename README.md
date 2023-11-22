@@ -13,7 +13,6 @@ Created to organize my cybersecurity notes from the past year, which were stored
 ## hubs
 
 - [todo list #hub](/zet/20221007044552/README.md)
-  - [todo](/zet/20221003150098/README.md)
   - [work in progress WIP](/zet/20221008042814/README.md)
     - [20230925055222](/zet/20230925055222/README.md) list of unfinished todo items #script #todo #list
   - [finished, but with ongoing related work #idea #meta](/zet/20221014215609/README.md)
