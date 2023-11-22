@@ -1,4 +1,5 @@
 - [20221006032546](/zet/20221006032546/README.md) my original implementation of zet cmd
+- [20221007193324](/zet/20221007193324/README.md) github actions
 - [20221008063052](/zet/20221008063052/README.md) autorunning scripts in cards
 - [20221025024238](/zet/20221025024238/README.md) enumerate tags
 - [20230919172630](/zet/20230919172630/README.md) script to get root of repository or obsidian knowledge base
