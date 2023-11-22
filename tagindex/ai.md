@@ -1,0 +1,1 @@
+- [20231114070621](/zet/20231114070621/README.md) script for chatGPT prompt to select tags for documents automatically

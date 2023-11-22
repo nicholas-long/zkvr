@@ -1,1 +1,2 @@
 - [20221011145143](/zet/20221011145143/README.md) bat command pretty printer
+- [20231121064457](/zet/20231121064457/README.md) merge note functionality for zkvr

@@ -80,6 +80,9 @@ zet/20221013021614/getcopycontent zet/20221013021614/README.md
 - [20221101163755](/zet/20221101163755/README.md) fix clone
 - [20221008042814](/zet/20221008042814/README.md) WIP
 - [20231004044241](/zet/20231004044241/README.md) script to strip and scrape all URLs out of text
+- [20231114070621](/zet/20231114070621/README.md) script for chatGPT prompt to select tags for documents automatically
+- [20231121064457](/zet/20231121064457/README.md) merge note functionality for zkvr
+- [20231112170729](/zet/20231112170729/README.md) script to get remote github URL from git repository
 
 Tags:
 

@@ -1,0 +1,1 @@
+- [20230919172630](/zet/20230919172630/README.md) script to get root of repository or obsidian knowledge base

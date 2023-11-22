@@ -4,3 +4,4 @@
 - [20221008063052](/zet/20221008063052/README.md) autorunning scripts in cards
 - [20221013021614](/zet/20221013021614/README.md) zkvr terminal graph browser
 - [20221024215216](/zet/20221024215216/README.md) future enhancements to graph query language
+- [20231121064457](/zet/20231121064457/README.md) merge note functionality for zkvr

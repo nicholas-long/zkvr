@@ -1,2 +1,4 @@
+- [20230919172630](/zet/20230919172630/README.md) script to get root of repository or obsidian knowledge base
 - [20230926234809](/zet/20230926234809/README.md) a non-platform-specific find command script for executable files
 - [20231004044241](/zet/20231004044241/README.md) script to strip and scrape all URLs out of text
+- [20231112170729](/zet/20231112170729/README.md) script to get remote github URL from git repository

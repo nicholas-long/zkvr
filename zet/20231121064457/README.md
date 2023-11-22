@@ -26,8 +26,6 @@
 - enrich to update all backlinks
 
 ```bash
-zet/20231121064457/merge-markdown-related-links zet/20231121064457/README.md zet/20230922214602/README.md
-./merge-markdown-related-links ../20231121064457/README.md ../20230922214602/README.md
 ./merge-markdown-related-links ../20230905015223/README.md ../20230916132320/README.md | bat --language=md
 ```
 
@@ -36,7 +34,6 @@ zet/20231121064457/merge-markdown-related-links zet/20231121064457/README.md zet
 # Related
 
 - [20221013021614](/zet/20221013021614/README.md) zkvr terminal graph browser
-- [20230922214602](/zet/20230922214602/README.md) things i want to implement in zkvr after working on the environment
 - [20221012171100](/zet/20221012171100/README.md) recently created nodes hub
 
 Tags:

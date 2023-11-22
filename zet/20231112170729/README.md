@@ -29,7 +29,6 @@ currentBranch=$(git branch --show-current)
 
 # Related
 
-- [20230925050125](/zet/20230925050125/README.md) git scripting hub
 - [20230919172630](/zet/20230919172630/README.md) script to get root of repository or obsidian knowledge base
 - [20221013021614](/zet/20221013021614/README.md) zkvr terminal graph browser
 - [20221008042814](/zet/20221008042814/README.md) WIP
