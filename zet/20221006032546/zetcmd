@@ -87,10 +87,12 @@ case $action in
     id=$(date -u +%Y%m%d%H%M%S)
     mkdir -p zet/$id
     filepath="zet/$id/README.md"
-    cp zettel-template "$filepath"
-    if [ ! -z "$title" ]; then
-      sed -i "s|{{title}}|$title|" "$filepath"
-    fi
+    # create from template with cross platform script here
+    zet/20231128160825/createtemplate "$title" "$id" > $filepath
+    #cp zettel-template "$filepath"
+    #if [ ! -z "$title" ]; then
+      #sed -i "s|{{title}}|$title|" "$filepath"
+    #fi
     if [ ! -z "$reference" ]; then
       $prog addref -t "$id" "$reference"
     fi

@@ -1,0 +1,34 @@
+#!/bin/bash
+
+if [ $# -lt 2 ]; then
+  echo "usage: $0 tag id"
+  exit 1
+fi
+tag="$1"
+doc="$2"
+if [[ "$tag" =~ \#.* ]]; then
+  tag=$(echo $tag | sed 's/^#//')
+fi
+
+export tag
+
+tf=$(mktemp)
+
+awk '
+NR > 1 { print last }
+{last = $0}
+END {
+  tags = last
+  tag = ENVIRON["tag"]
+  for (n = 1; n <= NF; n++) {
+    if ($n == ("#" tag)) {
+      print tags
+      exit 0
+    }
+  }
+  if (tags) tags = tags " "
+  tags = tags "#" tag
+  print tags
+}
+' "$doc" > $tf
+mv $tf "$doc"

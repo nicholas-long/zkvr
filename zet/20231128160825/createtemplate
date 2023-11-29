@@ -1,0 +1,12 @@
+#!/bin/bash
+
+export title="$1"
+export zetid="$2"
+
+awk '
+{
+  gsub(/{{title}}/,ENVIRON["title"])
+  gsub(/00000000000000/,ENVIRON["zetid"])
+  print
+}
+' zettel-template
