@@ -1,4 +1,3 @@
-- [20221006032546](/zet/20221006032546/README.md) my original implementation of zet cmd
 - [20221012144502](/zet/20221012144502/README.md) track modification dates
 - [20221013221136](/zet/20221013221136/README.md) graph query language for zettelkasten
 - [20221022000131](/zet/20221022000131/README.md) put tmux and vim rc config in dockerfile

@@ -22,6 +22,7 @@ $ ./zc addtag -t test 20231114070621
 
 - [20221009192000](/zet/20221009192000/README.md) stuff to put on main page
 - [20221013021614](/zet/20221013021614/README.md) zkvr terminal graph browser
+- [20231121064457](/zet/20231121064457/README.md) merge note functionality for zkvr
 
 Tags:
 

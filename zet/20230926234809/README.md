@@ -33,6 +33,7 @@ fi
 
 # Related
 
+- [20221006032546](/zet/20221006032546/README.md) my original implementation of zet cmd
 
 Tags:
 

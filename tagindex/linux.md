@@ -1,1 +1,2 @@
+- [20221006032546](/zet/20221006032546/README.md) my original implementation of zet cmd
 - [20221011145143](/zet/20221011145143/README.md) bat command pretty printer
