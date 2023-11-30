@@ -85,6 +85,7 @@ zet/20221013021614/getcopycontent zet/20221013021614/README.md
 - [20221014215609](/zet/20221014215609/README.md) finished, but with ongoing related work
 - [20231122205624](/zet/20231122205624/README.md) zkvr bugs fixed and features added
 - [20231122204839](/zet/20231122204839/README.md) zkvr work on demo features to show off
+- [20231129161540](/zet/20231129161540/README.md) copy or jump to recently edited files feature
 
 Tags:
 

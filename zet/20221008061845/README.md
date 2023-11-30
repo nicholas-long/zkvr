@@ -31,6 +31,7 @@ hub node for `workflow`
 - [20221101052020](/zet/20221101052020/README.md) TODO: Your to-do list
 - [20231122204839](/zet/20231122204839/README.md) zkvr work on demo features to show off
 - [20221014215609](/zet/20221014215609/README.md) finished, but with ongoing related work
+- [20231129161540](/zet/20231129161540/README.md) copy or jump to recently edited files feature
 
 Tags:
 
