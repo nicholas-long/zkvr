@@ -1,0 +1,7 @@
+#!/bin/bash
+
+if [[ $(uname) =~ Darwin ]]; then
+  find zet -type f -print0 | xargs -0 stat -f $'%m\t%N'
+else
+  find zet -type f -print0 | xargs -0 stat -c $'%Y\t%n'
+fi | sort -nr
