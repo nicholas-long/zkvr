@@ -2,6 +2,7 @@
 
 - concept of `symlink dockerfile`
 - tested and it still works
+- 2023-12-02 broke this by deleting bat deb pkg that was included in here
 
 ```sh
 mv Dockerfile zet/20221028172836/
