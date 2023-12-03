@@ -4,6 +4,7 @@
 - https://github.com/sharkdp/bat
 - included release package in this directory
   - update with new versions
+- could bring in [version selector script from environment](https://github.com/nicholas-long/environment/blob/main/zet/20230907151050/README.md)
 
 ```
 ```
