@@ -21,6 +21,7 @@
 - [20221008042814](/zet/20221008042814/README.md) WIP
 - [20221008063052](/zet/20221008063052/README.md) autorunning scripts in cards
 - [20221009192000](/zet/20221009192000/README.md) stuff to put on main page
+- [20231005213930](/zet/20231005213930/README.md) list of cards in order
 
 Tags:
 

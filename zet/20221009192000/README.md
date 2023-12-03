@@ -6,6 +6,7 @@ a script will check to see if the ID numbers appear on the main README.
 
 ```
 Missing:
+- [20231005213930](/zet/20231005213930/README.md) list of cards in order #meta #list
 - [20231114070621](/zet/20231114070621/README.md) script for chatGPT prompt to select tags for documents automatically #ai #meta
 - [20231122204839](/zet/20231122204839/README.md) zkvr work on demo features to show off #idea #list
 Extra:
@@ -28,6 +29,7 @@ Extra:
 - [20230925055222](/zet/20230925055222/README.md) list of unfinished todo items
 - [20231114070621](/zet/20231114070621/README.md) script for chatGPT prompt to select tags for documents automatically
 - [20231122204839](/zet/20231122204839/README.md) zkvr work on demo features to show off
+- [20231005213930](/zet/20231005213930/README.md) list of cards in order
 
 Tags:
 

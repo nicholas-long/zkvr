@@ -1,4 +1,5 @@
 - [20221006032546](/zet/20221006032546/README.md) my original implementation of zet cmd
 - [20221009192000](/zet/20221009192000/README.md) stuff to put on main page
 - [20221028172836](/zet/20221028172836/README.md) dockerfile for zkvr
+- [20231005213930](/zet/20231005213930/README.md) list of cards in order
 - [20231114070621](/zet/20231114070621/README.md) script for chatGPT prompt to select tags for documents automatically
