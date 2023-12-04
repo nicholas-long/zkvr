@@ -423,7 +423,7 @@ EOF
     # get all tags
     tail -n 1 zet/*/README.md | awk '/^    #/' | sed -e 's/^    //g' -e 's/ /\n/g' | LC_COLLATE=C sort -u -f > all_tags
     # get headings by parsing the output of calling the head command with many files
-    find zet -name README.md | sort | xargs head -n 1 | awk '
+    find zet -name README.md | awk -F / 'NF == 3' | sort | xargs head -n 1 | awk '
       BEGIN { OFS="\t" }
       /==>/ {
         f=$2
@@ -437,7 +437,7 @@ EOF
         print id, f, $0
       }' > id_headings
 
-    find zet -name README.md | xargs zet/$ZET_CMD_IMPLEMENTATION/scanrefs > $scanoutput
+    find zet -name README.md | awk -F / 'NF == 3' | xargs zet/$ZET_CMD_IMPLEMENTATION/scanrefs > $scanoutput
 
     # index tags
     rm -rf tagindex
