@@ -29,6 +29,19 @@ if [ "$1" == "video" ]; then
     zet/$IMPL/previewgit
   elif [[ "$3" =~ ^edit ]]; then
     editdoc=$(echo "$3" | awk '{print $2}')
+    if [[ $editdoc =~ png$ ]]; then
+      if which tesseract 2>/dev/null >/dev/null; then
+        echo "Image Preview"
+        echo "-------------"
+        zkpath=$(pwd)
+        tf=$(mktemp -d)
+        cd $tf
+        tesseract "$zkpath/$editdoc" output 2>/dev/null
+        cat output.txt
+        cd - >/dev/null
+        rm -rf $tf
+      fi
+    fi
     bat --style=plain --color=always "$editdoc"
   elif [ "$2" == "preview" ]; then
     selid=$(echo "$3" | implementation/parseids)
@@ -86,6 +99,7 @@ while [ 1 == "$going" ]; do
     print "/search"
     print "back"
     print "fuzz"
+    print "clipimage"
     if (doc != "README.md") {
       id = doc
       gsub(/^zet\//,"",id)
@@ -481,6 +495,16 @@ while [ 1 == "$going" ]; do
         nextid=$(echo "$recentfile" | cut -d / -f 2)
         ./zc addref -t $id $nextid
       fi
+    fi
+  elif [ "$act" == "clipimage" ]; then
+    timestamp=$(date -u +%Y%m%d%H%M%S)
+    dir=$(echo "$doc" | awk 'BEGIN{FS=OFS="/"}{NF--;print}')
+    filename="$dir/screenshot-$timestamp.png"
+    if [[ $(uname) =~ Darwin ]]; then
+      screenshotfile=$(ls ~/Desktop/Screenshot* | sort | tail -n 1)
+      cp "$screenshotfile" "$filename"
+    else
+      xclip -selection c -t image/png -o > "$filename"
     fi
   fi
 done
